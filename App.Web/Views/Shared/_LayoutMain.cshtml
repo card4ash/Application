@@ -11,18 +11,6 @@
 @using AppProj.Web.Controllers;
 @using AppProj.Web;
 @using AppProj.Web.Helpers;
-@{
-    var ajaxOpt = new AjaxOptions
-    {
-        HttpMethod = "POST",
-        UpdateTargetId = "dialog1Body",
-        InsertionMode = InsertionMode.Replace,
-        OnSuccess = "openDialog1('User Saved')",
-        LoadingElementId = "loading",
-        OnFailure = "failure",
-        Confirm = "Do you want to continue?"
-    };
-}
 
 <body>
     <div class="container">
@@ -48,9 +36,9 @@
 
                                                 if (SessionHelper.IsGuest)
                                                 {
-                                        <li>
-                                                <a data-ajax-method="GET" data-ajax-mode="replace" data-ajax-loading="#loading" data-ajax-failure="failure" data-ajax="true" href="~/UserProfile/ChangePassword" null="" data-ajax-update="#dialog1Body" data-ajax-success="openDialog1('Change Password')"><i class="fa fa-gear fa-fw"></i> Change Password</a>
-                                        </li>
+                                                    <li>
+                                                        <a href="~/UserProfile/ChangePassword">Change Password</a>
+                                                    </li>
                                                 }
                                             }
                                             catch { }

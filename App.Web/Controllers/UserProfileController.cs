@@ -216,13 +216,13 @@ namespace AppProj.Web.Controllers
                     data.Password = model.NewPassword.ToMD5();
                     service.Update(data);
                     unitOfWork.Commit();
-                    return PartialView("PasswordChanged");
+                    return View("PasswordChanged");
                 }
 
                 ModelState.AddModelError("", "Wrong password was given");
             }
 
-            return PartialView();
+            return View();
         }
 
 
@@ -245,7 +245,7 @@ namespace AppProj.Web.Controllers
                 data.Password = model.NewPassword.ToMD5();
                 service.Update(data);
                 unitOfWork.Commit();
-                return PartialView("PasswordChanged");
+                return PartialView("PasswordResetDone");
             }
 
             return PartialView();
