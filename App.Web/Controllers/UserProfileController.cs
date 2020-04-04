@@ -24,8 +24,7 @@ using Newtonsoft.Json;
 
 namespace AppProj.Web.Controllers
 {
-    [Authorize]
-    [CustomAuthorize(Roles:new string[] { "USER"})]
+    [Authorize]    
     public class UserProfileController : Controller
     {
         readonly IUserProfileService service;
@@ -47,11 +46,13 @@ namespace AppProj.Web.Controllers
             this.unitOfWork = unitOfWork;
         }
 
+        [CustomAuthorize(Roles: new string[] { "USER" })]
         public ActionResult Index()
         {   
             return View();
         }
 
+        [CustomAuthorize(Roles: new string[] { "USER" })]
         public ActionResult Create()
         {
             UserProfileModel up = new UserProfileModel();            
@@ -61,6 +62,7 @@ namespace AppProj.Web.Controllers
             return PartialView(up);
         }
 
+        [CustomAuthorize(Roles: new string[] { "USER" })]
         public ActionResult Edit(int Id)
         {
             var entity = service.GetDataById(Id);
@@ -73,6 +75,7 @@ namespace AppProj.Web.Controllers
             return PartialView("Create", model);
         }
 
+        [CustomAuthorize(Roles: new string[] { "USER" })]
         public ActionResult Save(UserProfileModel model)
         {
             var login = service.GetByPin(model.Pin);
@@ -99,7 +102,8 @@ namespace AppProj.Web.Controllers
             return PartialView();
 
         }
-        
+
+        [CustomAuthorize(Roles: new string[] { "USER" })]
         public ActionResult Details(int id)
         {
             UserProfile entity = service.GetDataById(id);
@@ -108,6 +112,7 @@ namespace AppProj.Web.Controllers
             return PartialView(model);
         }
 
+        [CustomAuthorize(Roles: new string[] { "USER" })]
         public ActionResult Districts(int Id)
         {
             try
@@ -131,6 +136,7 @@ namespace AppProj.Web.Controllers
             }
         }
 
+        [CustomAuthorize(Roles: new string[] { "USER" })]
         public ActionResult DistrictsAdd(int Id, int UserInfoId)
         {
             try
@@ -163,6 +169,7 @@ namespace AppProj.Web.Controllers
             }
         }
 
+        [CustomAuthorize(Roles: new string[] { "USER" })]
         public ActionResult DistrictsDelete(int Id)
         {
 
@@ -216,16 +223,16 @@ namespace AppProj.Web.Controllers
                     data.Password = model.NewPassword.ToMD5();
                     service.Update(data);
                     unitOfWork.Commit();
-                    return View("PasswordChanged");
+                    return PartialView("PasswordChanged");
                 }
 
                 ModelState.AddModelError("", "Wrong password was given");
             }
 
-            return View();
+            return PartialView();
         }
 
-
+        [CustomAuthorize(Roles: new string[] { "USER" })]
         public ActionResult ResetPass(int id)
         {
             UserProfileModel model = new UserProfileModel();
@@ -233,6 +240,7 @@ namespace AppProj.Web.Controllers
             return PartialView(model);
         }
 
+        [CustomAuthorize(Roles: new string[] { "USER" })]
         [HttpPost]
         public ActionResult ResetPass(UserProfileModel model)
         {
@@ -245,16 +253,17 @@ namespace AppProj.Web.Controllers
                 data.Password = model.NewPassword.ToMD5();
                 service.Update(data);
                 unitOfWork.Commit();
-                return PartialView("PasswordResetDone");
+                return PartialView("PasswordChanged");
             }
 
             return PartialView();
         }
-
+        
         public ActionResult PasswordChanged()
         {
             return PartialView();
         }
+
 
         public JsonResult GetProfileByPinTest()
         {

@@ -3477,7 +3477,6 @@
     <Content Include="Views\DetailSubmission\IndexApp.cshtml" />
     <Content Include="Views\UserProfile\PasswordChanged.cshtml" />
     <Content Include="Views\UserProfile\ResetPass.cshtml" />
-    <Content Include="Views\UserProfile\PasswordResetDone.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
