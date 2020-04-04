@@ -1,0 +1,62 @@
+﻿@model AppProj.Web.Models.LogOnModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>COVID-19 Response</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="~/Content/img/homeImages/home.css" media="screen, print">
+    <script src="~/Content/img/homeImages/ga.js" async="" type="text/javascript"></script>
+
+    @Styles.Render("~/Content/styles")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    <div class="container" style="padding-top: 10px;">
+        <div class="row" style="margin-top:50px;">
+            <div class="span4">&nbsp;</div>
+            <div class="span4">
+                <a class="logo-link" style="text-decoration: none;" href="#/">
+                    <h3 style="color: #474748;">COVID-19 Response</h3>
+                </a>
+            </div>
+            <div class="span4">&nbsp;</div>
+        </div>
+        <div class="row"  style="margin-top:50px;">
+            <div class="span4">&nbsp;</div>
+            <div class="span4">
+                <h2 class="muted">Special User Login</h2>
+                <div class="utopia-login">
+                    <form method="post" action="Login" class="utopia">
+                        <input type="hidden" name="site" id="site" value="@AppProj.Web.Helpers.SsoUtility.Site" />
+                        @Html.TextBoxFor(m => m.user, new { id = "UserName", @placeholder = "Pin", @class = "input-small" })
+                        @Html.PasswordFor(m => m.password, new { @id = "Password", @placeholder = "Password", @class = "input-small" })
+                        <button type="submit" class="btn" style="width: 100px; margin-top: -7px;">
+                            <img title="power" class="utopia-icons2-small-img" src="~/Content/img/icons2/power.png">
+                            Sign In
+                        </button>
+                        <span style="font-size: small; color: red; float: right">
+                            @RenderSection("featured", required: false)
+                        </span>
+
+                    </form>
+                </div>
+            </div>
+            <div class="span4">&nbsp;</div>
+        </div>
+       
+        @RenderBody()
+
+    </div>
+    @Scripts.Render("~/bundles/utopia")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+    });
+
+</script>

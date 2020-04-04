@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{095F327C-893C-46F3-A23C-6E46B8E16302}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppProj.Data</RootNamespace>
+    <AssemblyName>AppProj.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\DatabaseFactory.cs" />
+    <Compile Include="Infrastructure\IDatabaseFactory.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoriesImpl\DistrictByUserProfileRepository.cs" />
+    <Compile Include="RepositoriesImpl\DistrictDataRepository.cs" />
+    <Compile Include="RepositoriesImpl\HnppDataRepository.cs" />
+    <Compile Include="RepositoriesImpl\DetailDataRepository.cs" />
+    <Compile Include="RepositoriesImpl\QryRoleFeatureRepository.cs" />
+    <Compile Include="RepositoriesImpl\DistrictSummeryRepository.cs" />
+    <Compile Include="RepositoriesImpl\RoleDefaultPageRepository.cs" />
+    <Compile Include="RepositoriesImpl\FeatureRepository.cs" />
+    <Compile Include="RepositoriesImpl\RoleFeatureRepository.cs" />
+    <Compile Include="RepositoriesImpl\RoleRepository.cs" />
+    <Compile Include="RepositoriesImpl\StandingDataRepository.cs" />
+    <Compile Include="RepositoriesImpl\SummerizedDataRepository.cs" />
+    <Compile Include="RepositoriesImpl\UserLoginLogRepository.cs" />
+    <Compile Include="RepositoriesImpl\UserProfileRepository.cs" />
+    <Compile Include="Repositories\IDistrictByUserProfileRepository.cs" />
+    <Compile Include="Repositories\IDistrictDataRepository.cs" />
+    <Compile Include="Repositories\IHnppDataRepository.cs" />
+    <Compile Include="Repositories\IDetailDataRepository.cs" />
+    <Compile Include="Repositories\IQryRoleFeatureRepository.cs" />
+    <Compile Include="Repositories\IDistrictSummeryRepository.cs" />
+    <Compile Include="Repositories\IRoleDefaultPageRepository.cs" />
+    <Compile Include="Repositories\IFeatureRepository.cs" />
+    <Compile Include="Repositories\IRoleFeatureRepository.cs" />
+    <Compile Include="Repositories\IRoleRepository.cs" />
+    <Compile Include="Repositories\IStandingDataRepository.cs" />
+    <Compile Include="Repositories\ISummerizedDataRepository.cs" />
+    <Compile Include="Repositories\IUserLoginLogRepository.cs" />
+    <Compile Include="Repositories\IUserProfileRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\App.Domain\AppProj.Domain.csproj">
+      <Project>{633269f5-57af-4034-9283-a74d71b3108b}</Project>
+      <Name>AppProj.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

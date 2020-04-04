@@ -1,0 +1,1841 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DetailData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="SourceId" Type="int" Nullable="false" />
+          <Property Name="DistrictId" Type="int" Nullable="false" />
+          <Property Name="UpazillaId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="512" />
+          <Property Name="GenderId" Type="int" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="IsFever" Type="bit" />
+          <Property Name="IsDryCough" Type="bit" />
+          <Property Name="IsBreadth" Type="bit" />
+          <Property Name="IsRespiratory" Type="bit" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsContact" Type="bit" />
+          <Property Name="CollectedBy" Type="varchar" MaxLength="50" />
+          <Property Name="InsertedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DistrictByUserProfiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserInfoId" Type="int" Nullable="false" />
+          <Property Name="DistrictId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DistrictData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="DivisionId" Type="int" Nullable="false" />
+          <Property Name="DistrictId" Type="int" Nullable="false" />
+          <Property Name="NewQuarantine" Type="int" Nullable="false" />
+          <Property Name="ReleasedQuarantine" Type="int" Nullable="false" />
+          <Property Name="DoTestOn" Type="int" Nullable="false" />
+          <Property Name="Death" Type="int" Nullable="false" />
+          <Property Name="InsertedById" Type="int" Nullable="false" />
+          <Property Name="LocalAdminMeasure" Type="nvarchar(max)" />
+          <Property Name="Demand" Type="nvarchar(max)" />
+          <Property Name="Panic" Type="nvarchar(max)" />
+          <Property Name="SocialIssue" Type="nvarchar(max)" />
+          <Property Name="NgoDoing" Type="nvarchar(max)" />
+          <Property Name="NeedyPeople" Type="nvarchar(max)" />
+          <Property Name="BracDo" Type="nvarchar(max)" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="MemberCount" Type="int" Nullable="false" />
+          <Property Name="MemberUpazillaCount" Type="int" Nullable="false" />
+          <Property Name="BracThink" Type="nvarchar(max)" />
+          <Property Name="ReliefFamily" Type="int" Nullable="false" />
+          <Property Name="ReliefPerson" Type="int" Nullable="false" />
+          <Property Name="Rice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Dal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Potato" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Money" Type="int" Nullable="false" />
+          <Property Name="Onion" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Salt" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Oil" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Soap" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TillQuarantine" Type="int" Nullable="false" />
+          <Property Name="TillReleasedQuarantine" Type="int" Nullable="false" />
+          <Property Name="TillDoTestOn" Type="int" Nullable="false" />
+          <Property Name="TillDeath" Type="int" Nullable="false" />
+          <Property Name="TillCurrentQuarantine" Type="int" Nullable="false" />
+          <Property Name="ReliefRemarks" Type="nvarchar(max)" />
+          <Property Name="HospitalCount" Type="int" Nullable="false" />
+          <Property Name="BedCount" Type="int" Nullable="false" />
+          <Property Name="IcuCount" Type="int" Nullable="false" />
+          <Property Name="OtherPatientCount" Type="int" Nullable="false" />
+          <Property Name="BreathingPatientCount" Type="int" Nullable="false" />
+          <Property Name="MaternalCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DistrictSummery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DivisionId" Type="int" Nullable="false" />
+          <Property Name="DistrictId" Type="int" Nullable="false" />
+          <Property Name="HospitalCount" Type="int" Nullable="false" />
+          <Property Name="BedCount" Type="int" Nullable="false" />
+          <Property Name="IcuCount" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="InsertedById" Type="int" Nullable="false" />
+          <Property Name="LastUpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="TotalQuarantine" Type="int" Nullable="false" />
+          <Property Name="TotalReleased" Type="int" Nullable="false" />
+          <Property Name="CurrentQuarantine" Type="int" Nullable="false" />
+          <Property Name="TotalDoTestOn" Type="int" Nullable="false" />
+          <Property Name="TotalDeath" Type="int" Nullable="false" />
+          <Property Name="TotalReliefFamily" Type="int" Nullable="false" />
+          <Property Name="TotalReliefPerson" Type="int" Nullable="false" />
+          <Property Name="TotalRice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalDal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalPotato" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalMoney" Type="int" Nullable="false" />
+          <Property Name="TotalOnion" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalSalt" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalOil" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalSoap" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="OtherPatientCount" Type="int" Nullable="false" />
+          <Property Name="BreathingPatientCount" Type="int" Nullable="false" />
+          <Property Name="MaternalCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Features">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HnppData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="DistrictId" Type="int" Nullable="false" />
+          <Property Name="UpazillaId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CollectedBy" Type="varchar" MaxLength="50" />
+          <Property Name="RiskBySS" Type="int" Nullable="false" />
+          <Property Name="RiskBySK" Type="int" Nullable="false" />
+          <Property Name="RiskByPK" Type="int" Nullable="false" />
+          <Property Name="RiskByPA" Type="int" Nullable="false" />
+          <Property Name="RiskByAM" Type="int" Nullable="false" />
+          <Property Name="CaseCnt" Type="int" Nullable="false" />
+          <Property Name="BracMeeting" Type="int" Nullable="false" />
+          <Property Name="BracParticipant" Type="int" Nullable="false" />
+          <Property Name="GovtMeeting" Type="int" Nullable="false" />
+          <Property Name="GovtParticipant" Type="int" Nullable="false" />
+          <Property Name="Leaflet" Type="int" Nullable="false" />
+          <Property Name="Sticker" Type="int" Nullable="false" />
+          <Property Name="InsertedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleDefaultPages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PageUrl" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleFeatures">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="FeatureId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="RoleDefaultPageId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StandingDatas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IntValue" Type="int" />
+          <Property Name="StringValue" Type="nvarchar(max)" />
+          <Property Name="Latitude" Type="decimal" Precision="18" Scale="7" />
+          <Property Name="Longitude" Type="decimal" Precision="18" Scale="7" />
+          <Property Name="ParentId" Type="int" />
+        </EntityType>
+        <EntityType Name="SummerizedData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="SourceId" Type="int" Nullable="false" />
+          <Property Name="DistrictId" Type="int" Nullable="false" />
+          <Property Name="UpazillaId" Type="int" Nullable="false" />
+          <Property Name="ReachCount" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CollectedBy" Type="varchar" MaxLength="50" />
+          <Property Name="InsertedById" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserLoginLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PIN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoginTime" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="UserProfiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pin" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="64" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="512" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Covid.dbo.QryRoleFeatures' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="QryRoleFeatures">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="FeatureId" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="FeatureId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="64" />
+          <Property Name="Description" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <Association Name="FK_dbo_RoleFeatures_dbo_Features_FeatureId">
+          <End Role="Features" Type="Self.Features" Multiplicity="1" />
+          <End Role="RoleFeatures" Type="Self.RoleFeatures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Features">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleFeatures">
+              <PropertyRef Name="FeatureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RoleFeatures_dbo_Roles_RoleId">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="RoleFeatures" Type="Self.RoleFeatures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoleFeatures">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserProfiles_dbo_Roles_RoleId">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfiles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailData_StandingDatas">
+          <End Role="StandingDatas" Type="Self.StandingDatas" Multiplicity="1" />
+          <End Role="DetailData" Type="Self.DetailData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingDatas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetailData">
+              <PropertyRef Name="SourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailData_StandingDatas1">
+          <End Role="StandingDatas" Type="Self.StandingDatas" Multiplicity="1" />
+          <End Role="DetailData" Type="Self.DetailData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingDatas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetailData">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailData_StandingDatas2">
+          <End Role="StandingDatas" Type="Self.StandingDatas" Multiplicity="1" />
+          <End Role="DetailData" Type="Self.DetailData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingDatas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetailData">
+              <PropertyRef Name="UpazillaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailData_StandingDatas3">
+          <End Role="StandingDatas" Type="Self.StandingDatas" Multiplicity="0..1" />
+          <End Role="DetailData" Type="Self.DetailData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingDatas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetailData">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailData_UserProfiles">
+          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="1" />
+          <End Role="DetailData" Type="Self.DetailData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetailData">
+              <PropertyRef Name="InsertedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictByUserProfiles_StandingDatas">
+          <End Role="StandingDatas" Type="Self.StandingDatas" Multiplicity="1" />
+          <End Role="DistrictByUserProfiles" Type="Self.DistrictByUserProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingDatas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistrictByUserProfiles">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictByUserProfiles_UserProfiles">
+          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="1" />
+          <End Role="DistrictByUserProfiles" Type="Self.DistrictByUserProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistrictByUserProfiles">
+              <PropertyRef Name="UserInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictData_StandingDatas">
+          <End Role="StandingDatas" Type="Self.StandingDatas" Multiplicity="1" />
+          <End Role="DistrictData" Type="Self.DistrictData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingDatas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistrictData">
+              <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictData_StandingDatas1">
+          <End Role="StandingDatas" Type="Self.StandingDatas" Multiplicity="1" />
+          <End Role="DistrictData" Type="Self.DistrictData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingDatas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistrictData">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictData_UserProfiles">
+          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="1" />
+          <End Role="DistrictData" Type="Self.DistrictData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistrictData">
+              <PropertyRef Name="InsertedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictSummery_StandingDatas">
+          <End Role="StandingDatas" Type="Self.StandingDatas" Multiplicity="1" />
+          <End Role="DistrictSummery" Type="Self.DistrictSummery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingDatas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistrictSummery">
+              <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictSummery_StandingDatas1">
+          <End Role="StandingDatas" Type="Self.StandingDatas" Multiplicity="1" />
+          <End Role="DistrictSummery" Type="Self.DistrictSummery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingDatas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistrictSummery">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictSummery_UserProfiles">
+          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="1" />
+          <End Role="DistrictSummery" Type="Self.DistrictSummery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistrictSummery">
+              <PropertyRef Name="InsertedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HnppData_StandingDatas1">
+          <End Role="StandingDatas" Type="Self.StandingDatas" Multiplicity="1" />
+          <End Role="HnppData" Type="Self.HnppData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingDatas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HnppData">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HnppData_StandingDatas2">
+          <End Role="StandingDatas" Type="Self.StandingDatas" Multiplicity="1" />
+          <End Role="HnppData" Type="Self.HnppData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingDatas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HnppData">
+              <PropertyRef Name="UpazillaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HnppData_UserProfiles">
+          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="1" />
+          <End Role="HnppData" Type="Self.HnppData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HnppData">
+              <PropertyRef Name="InsertedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Roles_RoleDefaultPages">
+          <End Role="RoleDefaultPages" Type="Self.RoleDefaultPages" Multiplicity="1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleDefaultPages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="RoleDefaultPageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SummerizedData_StandingDatas">
+          <End Role="StandingDatas" Type="Self.StandingDatas" Multiplicity="1" />
+          <End Role="SummerizedData" Type="Self.SummerizedData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingDatas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SummerizedData">
+              <PropertyRef Name="SourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SummerizedData_StandingDatas1">
+          <End Role="StandingDatas" Type="Self.StandingDatas" Multiplicity="1" />
+          <End Role="SummerizedData" Type="Self.SummerizedData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingDatas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SummerizedData">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SummerizedData_StandingDatas2">
+          <End Role="StandingDatas" Type="Self.StandingDatas" Multiplicity="1" />
+          <End Role="SummerizedData" Type="Self.SummerizedData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingDatas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SummerizedData">
+              <PropertyRef Name="UpazillaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SummerizedData_UserProfiles">
+          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="1" />
+          <End Role="SummerizedData" Type="Self.SummerizedData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SummerizedData">
+              <PropertyRef Name="InsertedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="FunSubmissionApprovalCollectionDateDue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="date">
+          <Parameter Name="Proposal" Type="date" Mode="In" />
+          <Parameter Name="Budget1ApprovalDate" Type="date" Mode="In" />
+          <Parameter Name="Budget2ApprovalDate" Type="date" Mode="In" />
+          <Parameter Name="day" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SprMailSend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SprProjectsUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProjectId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="AppModelStoreContainer">
+          <EntitySet Name="DetailData" EntityType="Self.DetailData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DistrictByUserProfiles" EntityType="Self.DistrictByUserProfiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DistrictData" EntityType="Self.DistrictData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DistrictSummery" EntityType="Self.DistrictSummery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Features" EntityType="Self.Features" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HnppData" EntityType="Self.HnppData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleDefaultPages" EntityType="Self.RoleDefaultPages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleFeatures" EntityType="Self.RoleFeatures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StandingDatas" EntityType="Self.StandingDatas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SummerizedData" EntityType="Self.SummerizedData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLoginLog" EntityType="Self.UserLoginLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfiles" EntityType="Self.UserProfiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QryRoleFeatures" EntityType="Self.QryRoleFeatures" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[QryRoleFeatures].[Id] AS [Id], 
+[QryRoleFeatures].[RoleId] AS [RoleId], 
+[QryRoleFeatures].[FeatureId] AS [FeatureId], 
+[QryRoleFeatures].[Name] AS [Name], 
+[QryRoleFeatures].[Description] AS [Description]
+FROM [dbo].[QryRoleFeatures] AS [QryRoleFeatures]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_dbo_RoleFeatures_dbo_Features_FeatureId" Association="Self.FK_dbo_RoleFeatures_dbo_Features_FeatureId">
+            <End Role="Features" EntitySet="Features" />
+            <End Role="RoleFeatures" EntitySet="RoleFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RoleFeatures_dbo_Roles_RoleId" Association="Self.FK_dbo_RoleFeatures_dbo_Roles_RoleId">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RoleFeatures" EntitySet="RoleFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserProfiles_dbo_Roles_RoleId" Association="Self.FK_dbo_UserProfiles_dbo_Roles_RoleId">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserProfiles" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailData_StandingDatas" Association="Self.FK_DetailData_StandingDatas">
+            <End Role="StandingDatas" EntitySet="StandingDatas" />
+            <End Role="DetailData" EntitySet="DetailData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailData_StandingDatas1" Association="Self.FK_DetailData_StandingDatas1">
+            <End Role="StandingDatas" EntitySet="StandingDatas" />
+            <End Role="DetailData" EntitySet="DetailData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailData_StandingDatas2" Association="Self.FK_DetailData_StandingDatas2">
+            <End Role="StandingDatas" EntitySet="StandingDatas" />
+            <End Role="DetailData" EntitySet="DetailData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailData_StandingDatas3" Association="Self.FK_DetailData_StandingDatas3">
+            <End Role="StandingDatas" EntitySet="StandingDatas" />
+            <End Role="DetailData" EntitySet="DetailData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailData_UserProfiles" Association="Self.FK_DetailData_UserProfiles">
+            <End Role="UserProfiles" EntitySet="UserProfiles" />
+            <End Role="DetailData" EntitySet="DetailData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictByUserProfiles_StandingDatas" Association="Self.FK_DistrictByUserProfiles_StandingDatas">
+            <End Role="StandingDatas" EntitySet="StandingDatas" />
+            <End Role="DistrictByUserProfiles" EntitySet="DistrictByUserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictByUserProfiles_UserProfiles" Association="Self.FK_DistrictByUserProfiles_UserProfiles">
+            <End Role="UserProfiles" EntitySet="UserProfiles" />
+            <End Role="DistrictByUserProfiles" EntitySet="DistrictByUserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictData_StandingDatas" Association="Self.FK_DistrictData_StandingDatas">
+            <End Role="StandingDatas" EntitySet="StandingDatas" />
+            <End Role="DistrictData" EntitySet="DistrictData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictData_StandingDatas1" Association="Self.FK_DistrictData_StandingDatas1">
+            <End Role="StandingDatas" EntitySet="StandingDatas" />
+            <End Role="DistrictData" EntitySet="DistrictData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictData_UserProfiles" Association="Self.FK_DistrictData_UserProfiles">
+            <End Role="UserProfiles" EntitySet="UserProfiles" />
+            <End Role="DistrictData" EntitySet="DistrictData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictSummery_StandingDatas" Association="Self.FK_DistrictSummery_StandingDatas">
+            <End Role="StandingDatas" EntitySet="StandingDatas" />
+            <End Role="DistrictSummery" EntitySet="DistrictSummery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictSummery_StandingDatas1" Association="Self.FK_DistrictSummery_StandingDatas1">
+            <End Role="StandingDatas" EntitySet="StandingDatas" />
+            <End Role="DistrictSummery" EntitySet="DistrictSummery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictSummery_UserProfiles" Association="Self.FK_DistrictSummery_UserProfiles">
+            <End Role="UserProfiles" EntitySet="UserProfiles" />
+            <End Role="DistrictSummery" EntitySet="DistrictSummery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HnppData_StandingDatas1" Association="Self.FK_HnppData_StandingDatas1">
+            <End Role="StandingDatas" EntitySet="StandingDatas" />
+            <End Role="HnppData" EntitySet="HnppData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HnppData_StandingDatas2" Association="Self.FK_HnppData_StandingDatas2">
+            <End Role="StandingDatas" EntitySet="StandingDatas" />
+            <End Role="HnppData" EntitySet="HnppData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HnppData_UserProfiles" Association="Self.FK_HnppData_UserProfiles">
+            <End Role="UserProfiles" EntitySet="UserProfiles" />
+            <End Role="HnppData" EntitySet="HnppData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Roles_RoleDefaultPages" Association="Self.FK_Roles_RoleDefaultPages">
+            <End Role="RoleDefaultPages" EntitySet="RoleDefaultPages" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SummerizedData_StandingDatas" Association="Self.FK_SummerizedData_StandingDatas">
+            <End Role="StandingDatas" EntitySet="StandingDatas" />
+            <End Role="SummerizedData" EntitySet="SummerizedData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SummerizedData_StandingDatas1" Association="Self.FK_SummerizedData_StandingDatas1">
+            <End Role="StandingDatas" EntitySet="StandingDatas" />
+            <End Role="SummerizedData" EntitySet="SummerizedData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SummerizedData_StandingDatas2" Association="Self.FK_SummerizedData_StandingDatas2">
+            <End Role="StandingDatas" EntitySet="StandingDatas" />
+            <End Role="SummerizedData" EntitySet="SummerizedData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SummerizedData_UserProfiles" Association="Self.FK_SummerizedData_UserProfiles">
+            <End Role="UserProfiles" EntitySet="UserProfiles" />
+            <End Role="SummerizedData" EntitySet="SummerizedData" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="AppModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="AppModelContainer" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="FunGetPointsByUser" IsComposable="true" ReturnType="Collection(Int32)">
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="LocationId" Mode="In" Type="Int32" />
+            <Parameter Name="PointId" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FunGetProjectsByUser" IsComposable="true" ReturnType="Collection(Int32)">
+            <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FunGetSourceOfFundByUser" IsComposable="true" ReturnType="Collection(Int32)">
+            <Parameter Name="SourceOfFundId" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SprAssetEntryComplete">
+            <Parameter Name="AssetId" Mode="In" Type="Int32" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SprDepreciationCharge">
+            <Parameter Name="DepreciationScheduleId" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="errorCode" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SprDepreciationChargeCalculate">
+            <Parameter Name="DepreciationMethodId" Mode="In" Type="Int32" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="DepreciationScheduleId" Mode="In" Type="Int32" />
+            <Parameter Name="error" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SprDepreciationRollback">
+            <Parameter Name="DepreciationScheduleId" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="IsSuccess" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SprGetBarCode" ReturnType="Collection(String)">
+            <Parameter Name="PointId" Mode="In" Type="Int32" />
+            <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+            <Parameter Name="SourceOfFundId" Mode="In" Type="Int32" />
+            <Parameter Name="ProductId" Mode="In" Type="Int32" />
+            <Parameter Name="Quantity" Mode="In" Type="Int32" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SprGetSerial">
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="CodeFor" Mode="In" Type="String" />
+            <Parameter Name="SerialNo" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SprMovementComplete">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="MovementId" Mode="In" Type="Int32" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SprMovementOutsideComplete">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="MovementId" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SprRptAssetsDepreciationSchedule" ReturnType="Collection(AppModel.SprRptAssetsDepreciationSchedule_Result)">
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="AreaName" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SprRptAssetsExpired" ReturnType="Collection(AppModel.SprRptAssetsExpired_Result)">
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="LocationId" Mode="In" Type="Int32" />
+            <Parameter Name="PointId" Mode="In" Type="Int32" />
+            <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+            <Parameter Name="SourceOfFundId" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="AreaName" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SprRptAssetsInventory" ReturnType="Collection(AppModel.SprRptAssetsInventory_Result)">
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="LocationId" Mode="In" Type="Int32" />
+            <Parameter Name="PointId" Mode="In" Type="Int32" />
+            <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+            <Parameter Name="SourceOfFundId" Mode="In" Type="Int32" />
+            <Parameter Name="ProductGroupId" Mode="In" Type="Int32" />
+            <Parameter Name="ProductCategoryId" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="AreaName" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SprRptAssetsPurchase" ReturnType="Collection(AppModel.SprRptAssetsPurchase_Result)">
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="LocationId" Mode="In" Type="Int32" />
+            <Parameter Name="PointId" Mode="In" Type="Int32" />
+            <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+            <Parameter Name="SourceOfFundId" Mode="In" Type="Int32" />
+            <Parameter Name="ProductGroupId" Mode="In" Type="Int32" />
+            <Parameter Name="ProductCategoryId" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="AreaName" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SprRptAssetsValuation" ReturnType="Collection(AppModel.SprRptAssetsValuation_Result)">
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+            <Parameter Name="SourceOfFundId" Mode="In" Type="Int32" />
+            <Parameter Name="ProductGroupId" Mode="In" Type="Int32" />
+            <Parameter Name="ProductCategoryId" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="AreaName" Mode="InOut" Type="String" />
+            <Parameter Name="ProjectName" Mode="InOut" Type="String" />
+            <Parameter Name="SourceOfFundName" Mode="InOut" Type="String" />
+            <Parameter Name="ProductGroupName" Mode="InOut" Type="String" />
+            <Parameter Name="ProductCategoryName" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SprRptProductMatrix" ReturnType="Collection(AppModel.SprRptProductMatrix_Result)">
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SprProjectsUpdate">
+          <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SprMailSend" ReturnType="Collection(AppModel.SprMailSend_Result)" />
+          <EntitySet Name="DetailDatas" EntityType="AppModel.DetailData" />
+          <EntitySet Name="DistrictByUserProfiles" EntityType="AppModel.DistrictByUserProfile" />
+          <EntitySet Name="DistrictDatas" EntityType="AppModel.DistrictData" />
+          <EntitySet Name="DistrictSummeries" EntityType="AppModel.DistrictSummery" />
+          <EntitySet Name="Features" EntityType="AppModel.Feature" />
+          <EntitySet Name="HnppDatas" EntityType="AppModel.HnppData" />
+          <EntitySet Name="RoleDefaultPages" EntityType="AppModel.RoleDefaultPage" />
+          <EntitySet Name="RoleFeatures" EntityType="AppModel.RoleFeature" />
+          <EntitySet Name="Roles" EntityType="AppModel.Role" />
+          <EntitySet Name="StandingDatas" EntityType="AppModel.StandingData" />
+          <EntitySet Name="SummerizedDatas" EntityType="AppModel.SummerizedData" />
+          <EntitySet Name="UserLoginLogs" EntityType="AppModel.UserLoginLog" />
+          <EntitySet Name="UserProfiles" EntityType="AppModel.UserProfile" />
+          <EntitySet Name="QryRoleFeatures" EntityType="AppModel.QryRoleFeature" />
+          <AssociationSet Name="FK_DetailData_StandingDatas" Association="AppModel.FK_DetailData_StandingDatas">
+            <End Role="StandingData" EntitySet="StandingDatas" />
+            <End Role="DetailData" EntitySet="DetailDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailData_StandingDatas1" Association="AppModel.FK_DetailData_StandingDatas1">
+            <End Role="StandingData" EntitySet="StandingDatas" />
+            <End Role="DetailData" EntitySet="DetailDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailData_StandingDatas2" Association="AppModel.FK_DetailData_StandingDatas2">
+            <End Role="StandingData" EntitySet="StandingDatas" />
+            <End Role="DetailData" EntitySet="DetailDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailData_StandingDatas3" Association="AppModel.FK_DetailData_StandingDatas3">
+            <End Role="StandingData" EntitySet="StandingDatas" />
+            <End Role="DetailData" EntitySet="DetailDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailData_UserProfiles" Association="AppModel.FK_DetailData_UserProfiles">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="DetailData" EntitySet="DetailDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictByUserProfiles_StandingDatas" Association="AppModel.FK_DistrictByUserProfiles_StandingDatas">
+            <End Role="StandingData" EntitySet="StandingDatas" />
+            <End Role="DistrictByUserProfile" EntitySet="DistrictByUserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictByUserProfiles_UserProfiles" Association="AppModel.FK_DistrictByUserProfiles_UserProfiles">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="DistrictByUserProfile" EntitySet="DistrictByUserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictData_StandingDatas" Association="AppModel.FK_DistrictData_StandingDatas">
+            <End Role="StandingData" EntitySet="StandingDatas" />
+            <End Role="DistrictData" EntitySet="DistrictDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictData_StandingDatas1" Association="AppModel.FK_DistrictData_StandingDatas1">
+            <End Role="StandingData" EntitySet="StandingDatas" />
+            <End Role="DistrictData" EntitySet="DistrictDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictData_UserProfiles" Association="AppModel.FK_DistrictData_UserProfiles">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="DistrictData" EntitySet="DistrictDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictSummery_StandingDatas" Association="AppModel.FK_DistrictSummery_StandingDatas">
+            <End Role="StandingData" EntitySet="StandingDatas" />
+            <End Role="DistrictSummery" EntitySet="DistrictSummeries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictSummery_StandingDatas1" Association="AppModel.FK_DistrictSummery_StandingDatas1">
+            <End Role="StandingData" EntitySet="StandingDatas" />
+            <End Role="DistrictSummery" EntitySet="DistrictSummeries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictSummery_UserProfiles" Association="AppModel.FK_DistrictSummery_UserProfiles">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="DistrictSummery" EntitySet="DistrictSummeries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RoleFeatures_dbo_Features_FeatureId" Association="AppModel.FK_dbo_RoleFeatures_dbo_Features_FeatureId">
+            <End Role="Feature" EntitySet="Features" />
+            <End Role="RoleFeature" EntitySet="RoleFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HnppData_StandingDatas1" Association="AppModel.FK_HnppData_StandingDatas1">
+            <End Role="StandingData" EntitySet="StandingDatas" />
+            <End Role="HnppData" EntitySet="HnppDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HnppData_StandingDatas2" Association="AppModel.FK_HnppData_StandingDatas2">
+            <End Role="StandingData" EntitySet="StandingDatas" />
+            <End Role="HnppData" EntitySet="HnppDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HnppData_UserProfiles" Association="AppModel.FK_HnppData_UserProfiles">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="HnppData" EntitySet="HnppDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Roles_RoleDefaultPages" Association="AppModel.FK_Roles_RoleDefaultPages">
+            <End Role="RoleDefaultPage" EntitySet="RoleDefaultPages" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RoleFeatures_dbo_Roles_RoleId" Association="AppModel.FK_dbo_RoleFeatures_dbo_Roles_RoleId">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="RoleFeature" EntitySet="RoleFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserProfiles_dbo_Roles_RoleId" Association="AppModel.FK_dbo_UserProfiles_dbo_Roles_RoleId">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SummerizedData_StandingDatas" Association="AppModel.FK_SummerizedData_StandingDatas">
+            <End Role="StandingData" EntitySet="StandingDatas" />
+            <End Role="SummerizedData" EntitySet="SummerizedDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SummerizedData_StandingDatas1" Association="AppModel.FK_SummerizedData_StandingDatas1">
+            <End Role="StandingData" EntitySet="StandingDatas" />
+            <End Role="SummerizedData" EntitySet="SummerizedDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SummerizedData_StandingDatas2" Association="AppModel.FK_SummerizedData_StandingDatas2">
+            <End Role="StandingData" EntitySet="StandingDatas" />
+            <End Role="SummerizedData" EntitySet="SummerizedDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SummerizedData_UserProfiles" Association="AppModel.FK_SummerizedData_UserProfiles">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="SummerizedData" EntitySet="SummerizedDatas" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="SprRptAssetsDepreciationSchedule_Result">
+          <Property Type="String" Name="GroupName" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="Code" Nullable="true" MaxLength="128" />
+          <Property Type="Decimal" Name="DeprPercent" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="OpeningPurchaseValue" Nullable="false" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="AdditionPurchaseValue" Nullable="false" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="DeductionPurchaseValue" Nullable="false" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="AccumulatedDepreciation" Nullable="false" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Charge" Nullable="false" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Adjustment" Nullable="false" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="SprRptAssetsExpired_Result">
+          <Property Type="String" Name="SourceOfFundName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ProjectName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="PointName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="LocationName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="AreaName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ProductCategoryName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ProductGroupName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="MfgSlNo" Nullable="true" MaxLength="128" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="true" />
+          <Property Type="Decimal" Name="PurchaseValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="BookValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="AccumulatedDepreciation" Nullable="true" Precision="20" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="SprRptAssetsInventory_Result">
+          <Property Type="String" Name="SourceOfFundName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ProjectName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="PointName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="LocationName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="AreaName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ProductCategoryName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ProductGroupName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="MfgSlNo" Nullable="true" MaxLength="128" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="true" />
+          <Property Type="Decimal" Name="PurchaseValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="BookValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="AccumulatedDepreciation" Nullable="true" Precision="20" Scale="2" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="256" />
+          <Property Type="Boolean" Name="IsHold" Nullable="false" />
+          <Property Type="DateTime" Name="BeginDate" Nullable="true" />
+          <Property Type="DateTime" Name="ExpiredDate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SprRptAssetsPurchase_Result">
+          <Property Type="String" Name="SourceOfFundName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ProjectName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="PointName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="LocationName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="AreaName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ProductCategoryName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ProductGroupName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="MfgSlNo" Nullable="true" MaxLength="128" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="true" />
+          <Property Type="Decimal" Name="PurchaseValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="BookValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="AccumulatedDepreciation" Nullable="true" Precision="20" Scale="2" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="256" />
+          <Property Type="Boolean" Name="IsHold" Nullable="false" />
+          <Property Type="DateTime" Name="BeginDate" Nullable="true" />
+          <Property Type="DateTime" Name="ExpiredDate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SprRptAssetsValuation_Result">
+          <Property Type="String" Name="ProductGroupName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ProductCategoryName" Nullable="true" MaxLength="128" />
+          <Property Type="Decimal" Name="PurchaseValue" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="BookValue" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Int32" Name="ProductCategoryId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SprRptProductMatrix_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="ProductCategoryId" Nullable="false" />
+          <Property Type="Int32" Name="UnitId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="PublicName" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="Ordering" Nullable="false" />
+          <Property Type="String" Name="ProductCode" Nullable="false" MaxLength="16" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Boolean" Name="IsPurchaseable" Nullable="false" />
+          <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="CategoryCode" Nullable="true" MaxLength="32" />
+          <Property Type="Int32" Name="ProductGroupId" Nullable="true" />
+          <Property Type="String" Name="GroupName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="GroupCode" Nullable="true" MaxLength="32" />
+          <Property Type="Decimal" Name="DepreciationChargePercentage" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="SprMailSend_Result">
+          <Property Type="String" Name="addr" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="mail" Nullable="true" />
+          <Property Type="String" Name="sub" Nullable="true" MaxLength="256" />
+        </ComplexType>
+        <EntityType Name="DetailData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SourceId" Type="Int32" Nullable="false" />
+          <Property Name="DistrictId" Type="Int32" Nullable="false" />
+          <Property Name="UpazillaId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="GenderId" Type="Int32" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsFever" Type="Boolean" />
+          <Property Name="IsDryCough" Type="Boolean" />
+          <Property Name="IsBreadth" Type="Boolean" />
+          <Property Name="IsRespiratory" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsContact" Type="Boolean" />
+          <Property Name="CollectedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InsertedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StandingData" Relationship="AppModel.FK_DetailData_StandingDatas" FromRole="DetailData" ToRole="StandingData" />
+          <NavigationProperty Name="StandingData1" Relationship="AppModel.FK_DetailData_StandingDatas1" FromRole="DetailData" ToRole="StandingData" />
+          <NavigationProperty Name="StandingData2" Relationship="AppModel.FK_DetailData_StandingDatas2" FromRole="DetailData" ToRole="StandingData" />
+          <NavigationProperty Name="StandingData3" Relationship="AppModel.FK_DetailData_StandingDatas3" FromRole="DetailData" ToRole="StandingData" />
+          <NavigationProperty Name="UserProfile" Relationship="AppModel.FK_DetailData_UserProfiles" FromRole="DetailData" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="DistrictByUserProfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserInfoId" Type="Int32" Nullable="false" />
+          <Property Name="DistrictId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StandingData" Relationship="AppModel.FK_DistrictByUserProfiles_StandingDatas" FromRole="DistrictByUserProfile" ToRole="StandingData" />
+          <NavigationProperty Name="UserProfile" Relationship="AppModel.FK_DistrictByUserProfiles_UserProfiles" FromRole="DistrictByUserProfile" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="DistrictData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DivisionId" Type="Int32" Nullable="false" />
+          <Property Name="DistrictId" Type="Int32" Nullable="false" />
+          <Property Name="NewQuarantine" Type="Int32" Nullable="false" />
+          <Property Name="ReleasedQuarantine" Type="Int32" Nullable="false" />
+          <Property Name="DoTestOn" Type="Int32" Nullable="false" />
+          <Property Name="Death" Type="Int32" Nullable="false" />
+          <Property Name="InsertedById" Type="Int32" Nullable="false" />
+          <Property Name="LocalAdminMeasure" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Demand" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Panic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SocialIssue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgoDoing" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NeedyPeople" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BracDo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MemberCount" Type="Int32" Nullable="false" />
+          <Property Name="MemberUpazillaCount" Type="Int32" Nullable="false" />
+          <Property Name="BracThink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReliefFamily" Type="Int32" Nullable="false" />
+          <Property Name="ReliefPerson" Type="Int32" Nullable="false" />
+          <Property Name="Rice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Dal" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Potato" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Money" Type="Int32" Nullable="false" />
+          <Property Name="Onion" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Salt" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Oil" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Soap" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TillQuarantine" Type="Int32" Nullable="false" />
+          <Property Name="TillReleasedQuarantine" Type="Int32" Nullable="false" />
+          <Property Name="TillDoTestOn" Type="Int32" Nullable="false" />
+          <Property Name="TillDeath" Type="Int32" Nullable="false" />
+          <Property Name="TillCurrentQuarantine" Type="Int32" Nullable="false" />
+          <Property Name="ReliefRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StandingData" Relationship="AppModel.FK_DistrictData_StandingDatas" FromRole="DistrictData" ToRole="StandingData" />
+          <NavigationProperty Name="StandingData1" Relationship="AppModel.FK_DistrictData_StandingDatas1" FromRole="DistrictData" ToRole="StandingData" />
+          <NavigationProperty Name="UserProfile" Relationship="AppModel.FK_DistrictData_UserProfiles" FromRole="DistrictData" ToRole="UserProfile" />
+          <Property Name="HospitalCount" Type="Int32" Nullable="false" />
+          <Property Name="BedCount" Type="Int32" Nullable="false" />
+          <Property Name="IcuCount" Type="Int32" Nullable="false" />
+          <Property Name="OtherPatientCount" Type="Int32" Nullable="false" />
+          <Property Name="BreathingPatientCount" Type="Int32" Nullable="false" />
+          <Property Name="MaternalCount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DistrictSummery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DivisionId" Type="Int32" Nullable="false" />
+          <Property Name="DistrictId" Type="Int32" Nullable="false" />
+          <Property Name="HospitalCount" Type="Int32" Nullable="false" />
+          <Property Name="BedCount" Type="Int32" Nullable="false" />
+          <Property Name="IcuCount" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InsertedById" Type="Int32" Nullable="false" />
+          <Property Name="LastUpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TotalQuarantine" Type="Int32" Nullable="false" />
+          <Property Name="TotalReleased" Type="Int32" Nullable="false" />
+          <Property Name="CurrentQuarantine" Type="Int32" Nullable="false" />
+          <Property Name="TotalDoTestOn" Type="Int32" Nullable="false" />
+          <Property Name="TotalDeath" Type="Int32" Nullable="false" />
+          <Property Name="TotalReliefFamily" Type="Int32" Nullable="false" />
+          <Property Name="TotalReliefPerson" Type="Int32" Nullable="false" />
+          <Property Name="TotalRice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TotalDal" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TotalPotato" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TotalMoney" Type="Int32" Nullable="false" />
+          <Property Name="TotalOnion" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TotalSalt" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TotalOil" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TotalSoap" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="OtherPatientCount" Type="Int32" Nullable="false" />
+          <Property Name="BreathingPatientCount" Type="Int32" Nullable="false" />
+          <Property Name="MaternalCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StandingData" Relationship="AppModel.FK_DistrictSummery_StandingDatas" FromRole="DistrictSummery" ToRole="StandingData" />
+          <NavigationProperty Name="StandingData1" Relationship="AppModel.FK_DistrictSummery_StandingDatas1" FromRole="DistrictSummery" ToRole="StandingData" />
+          <NavigationProperty Name="UserProfile" Relationship="AppModel.FK_DistrictSummery_UserProfiles" FromRole="DistrictSummery" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Feature">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="RoleFeatures" Relationship="AppModel.FK_dbo_RoleFeatures_dbo_Features_FeatureId" FromRole="Feature" ToRole="RoleFeature" />
+        </EntityType>
+        <EntityType Name="HnppData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DistrictId" Type="Int32" Nullable="false" />
+          <Property Name="UpazillaId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CollectedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RiskBySS" Type="Int32" Nullable="false" />
+          <Property Name="RiskBySK" Type="Int32" Nullable="false" />
+          <Property Name="RiskByPK" Type="Int32" Nullable="false" />
+          <Property Name="RiskByPA" Type="Int32" Nullable="false" />
+          <Property Name="RiskByAM" Type="Int32" Nullable="false" />
+          <Property Name="CaseCnt" Type="Int32" Nullable="false" />
+          <Property Name="BracMeeting" Type="Int32" Nullable="false" />
+          <Property Name="BracParticipant" Type="Int32" Nullable="false" />
+          <Property Name="GovtMeeting" Type="Int32" Nullable="false" />
+          <Property Name="GovtParticipant" Type="Int32" Nullable="false" />
+          <Property Name="Leaflet" Type="Int32" Nullable="false" />
+          <Property Name="Sticker" Type="Int32" Nullable="false" />
+          <Property Name="InsertedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StandingData" Relationship="AppModel.FK_HnppData_StandingDatas1" FromRole="HnppData" ToRole="StandingData" />
+          <NavigationProperty Name="StandingData1" Relationship="AppModel.FK_HnppData_StandingDatas2" FromRole="HnppData" ToRole="StandingData" />
+          <NavigationProperty Name="UserProfile" Relationship="AppModel.FK_HnppData_UserProfiles" FromRole="HnppData" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="RoleDefaultPage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PageUrl" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Roles" Relationship="AppModel.FK_Roles_RoleDefaultPages" FromRole="RoleDefaultPage" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="RoleFeature">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="FeatureId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Feature" Relationship="AppModel.FK_dbo_RoleFeatures_dbo_Features_FeatureId" FromRole="RoleFeature" ToRole="Feature" />
+          <NavigationProperty Name="Role" Relationship="AppModel.FK_dbo_RoleFeatures_dbo_Roles_RoleId" FromRole="RoleFeature" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="RoleDefaultPageId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="RoleDefaultPage" Relationship="AppModel.FK_Roles_RoleDefaultPages" FromRole="Role" ToRole="RoleDefaultPage" />
+          <NavigationProperty Name="RoleFeatures" Relationship="AppModel.FK_dbo_RoleFeatures_dbo_Roles_RoleId" FromRole="Role" ToRole="RoleFeature" />
+          <NavigationProperty Name="UserProfiles" Relationship="AppModel.FK_dbo_UserProfiles_dbo_Roles_RoleId" FromRole="Role" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="StandingData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IntValue" Type="Int32" />
+          <Property Name="StringValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Decimal" Precision="18" Scale="7" />
+          <Property Name="Longitude" Type="Decimal" Precision="18" Scale="7" />
+          <Property Name="ParentId" Type="Int32" />
+          <NavigationProperty Name="DetailDatas" Relationship="AppModel.FK_DetailData_StandingDatas" FromRole="StandingData" ToRole="DetailData" />
+          <NavigationProperty Name="DetailDatas1" Relationship="AppModel.FK_DetailData_StandingDatas1" FromRole="StandingData" ToRole="DetailData" />
+          <NavigationProperty Name="DetailDatas2" Relationship="AppModel.FK_DetailData_StandingDatas2" FromRole="StandingData" ToRole="DetailData" />
+          <NavigationProperty Name="DetailDatas3" Relationship="AppModel.FK_DetailData_StandingDatas3" FromRole="StandingData" ToRole="DetailData" />
+          <NavigationProperty Name="DistrictByUserProfiles" Relationship="AppModel.FK_DistrictByUserProfiles_StandingDatas" FromRole="StandingData" ToRole="DistrictByUserProfile" />
+          <NavigationProperty Name="DistrictDatas" Relationship="AppModel.FK_DistrictData_StandingDatas" FromRole="StandingData" ToRole="DistrictData" />
+          <NavigationProperty Name="DistrictDatas1" Relationship="AppModel.FK_DistrictData_StandingDatas1" FromRole="StandingData" ToRole="DistrictData" />
+          <NavigationProperty Name="DistrictSummeries" Relationship="AppModel.FK_DistrictSummery_StandingDatas" FromRole="StandingData" ToRole="DistrictSummery" />
+          <NavigationProperty Name="DistrictSummeries1" Relationship="AppModel.FK_DistrictSummery_StandingDatas1" FromRole="StandingData" ToRole="DistrictSummery" />
+          <NavigationProperty Name="HnppDatas" Relationship="AppModel.FK_HnppData_StandingDatas1" FromRole="StandingData" ToRole="HnppData" />
+          <NavigationProperty Name="HnppDatas1" Relationship="AppModel.FK_HnppData_StandingDatas2" FromRole="StandingData" ToRole="HnppData" />
+          <NavigationProperty Name="SummerizedDatas" Relationship="AppModel.FK_SummerizedData_StandingDatas" FromRole="StandingData" ToRole="SummerizedData" />
+          <NavigationProperty Name="SummerizedDatas1" Relationship="AppModel.FK_SummerizedData_StandingDatas1" FromRole="StandingData" ToRole="SummerizedData" />
+          <NavigationProperty Name="SummerizedDatas2" Relationship="AppModel.FK_SummerizedData_StandingDatas2" FromRole="StandingData" ToRole="SummerizedData" />
+        </EntityType>
+        <EntityType Name="SummerizedData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SourceId" Type="Int32" Nullable="false" />
+          <Property Name="DistrictId" Type="Int32" Nullable="false" />
+          <Property Name="UpazillaId" Type="Int32" Nullable="false" />
+          <Property Name="ReachCount" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CollectedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InsertedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StandingData" Relationship="AppModel.FK_SummerizedData_StandingDatas" FromRole="SummerizedData" ToRole="StandingData" />
+          <NavigationProperty Name="StandingData1" Relationship="AppModel.FK_SummerizedData_StandingDatas1" FromRole="SummerizedData" ToRole="StandingData" />
+          <NavigationProperty Name="StandingData2" Relationship="AppModel.FK_SummerizedData_StandingDatas2" FromRole="SummerizedData" ToRole="StandingData" />
+          <NavigationProperty Name="UserProfile" Relationship="AppModel.FK_SummerizedData_UserProfiles" FromRole="SummerizedData" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="UserLoginLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PIN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LoginTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pin" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DetailDatas" Relationship="AppModel.FK_DetailData_UserProfiles" FromRole="UserProfile" ToRole="DetailData" />
+          <NavigationProperty Name="DistrictByUserProfiles" Relationship="AppModel.FK_DistrictByUserProfiles_UserProfiles" FromRole="UserProfile" ToRole="DistrictByUserProfile" />
+          <NavigationProperty Name="DistrictDatas" Relationship="AppModel.FK_DistrictData_UserProfiles" FromRole="UserProfile" ToRole="DistrictData" />
+          <NavigationProperty Name="DistrictSummeries" Relationship="AppModel.FK_DistrictSummery_UserProfiles" FromRole="UserProfile" ToRole="DistrictSummery" />
+          <NavigationProperty Name="HnppDatas" Relationship="AppModel.FK_HnppData_UserProfiles" FromRole="UserProfile" ToRole="HnppData" />
+          <NavigationProperty Name="Role" Relationship="AppModel.FK_dbo_UserProfiles_dbo_Roles_RoleId" FromRole="UserProfile" ToRole="Role" />
+          <NavigationProperty Name="SummerizedDatas" Relationship="AppModel.FK_SummerizedData_UserProfiles" FromRole="UserProfile" ToRole="SummerizedData" />
+          <Property Name="Password" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="QryRoleFeature">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="FeatureId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="FeatureId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_DetailData_StandingDatas">
+          <End Type="AppModel.StandingData" Role="StandingData" Multiplicity="1" />
+          <End Type="AppModel.DetailData" Role="DetailData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetailData">
+              <PropertyRef Name="SourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailData_StandingDatas1">
+          <End Type="AppModel.StandingData" Role="StandingData" Multiplicity="1" />
+          <End Type="AppModel.DetailData" Role="DetailData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetailData">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailData_StandingDatas2">
+          <End Type="AppModel.StandingData" Role="StandingData" Multiplicity="1" />
+          <End Type="AppModel.DetailData" Role="DetailData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetailData">
+              <PropertyRef Name="UpazillaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailData_StandingDatas3">
+          <End Type="AppModel.StandingData" Role="StandingData" Multiplicity="0..1" />
+          <End Type="AppModel.DetailData" Role="DetailData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetailData">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailData_UserProfiles">
+          <End Type="AppModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="AppModel.DetailData" Role="DetailData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetailData">
+              <PropertyRef Name="InsertedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictByUserProfiles_StandingDatas">
+          <End Type="AppModel.StandingData" Role="StandingData" Multiplicity="1" />
+          <End Type="AppModel.DistrictByUserProfile" Role="DistrictByUserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistrictByUserProfile">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictByUserProfiles_UserProfiles">
+          <End Type="AppModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="AppModel.DistrictByUserProfile" Role="DistrictByUserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistrictByUserProfile">
+              <PropertyRef Name="UserInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictData_StandingDatas">
+          <End Type="AppModel.StandingData" Role="StandingData" Multiplicity="1" />
+          <End Type="AppModel.DistrictData" Role="DistrictData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistrictData">
+              <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictData_StandingDatas1">
+          <End Type="AppModel.StandingData" Role="StandingData" Multiplicity="1" />
+          <End Type="AppModel.DistrictData" Role="DistrictData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistrictData">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictData_UserProfiles">
+          <End Type="AppModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="AppModel.DistrictData" Role="DistrictData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistrictData">
+              <PropertyRef Name="InsertedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictSummery_StandingDatas">
+          <End Type="AppModel.StandingData" Role="StandingData" Multiplicity="1" />
+          <End Type="AppModel.DistrictSummery" Role="DistrictSummery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistrictSummery">
+              <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictSummery_StandingDatas1">
+          <End Type="AppModel.StandingData" Role="StandingData" Multiplicity="1" />
+          <End Type="AppModel.DistrictSummery" Role="DistrictSummery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistrictSummery">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictSummery_UserProfiles">
+          <End Type="AppModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="AppModel.DistrictSummery" Role="DistrictSummery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistrictSummery">
+              <PropertyRef Name="InsertedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RoleFeatures_dbo_Features_FeatureId">
+          <End Type="AppModel.Feature" Role="Feature" Multiplicity="1" />
+          <End Type="AppModel.RoleFeature" Role="RoleFeature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Feature">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleFeature">
+              <PropertyRef Name="FeatureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HnppData_StandingDatas1">
+          <End Type="AppModel.StandingData" Role="StandingData" Multiplicity="1" />
+          <End Type="AppModel.HnppData" Role="HnppData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HnppData">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HnppData_StandingDatas2">
+          <End Type="AppModel.StandingData" Role="StandingData" Multiplicity="1" />
+          <End Type="AppModel.HnppData" Role="HnppData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HnppData">
+              <PropertyRef Name="UpazillaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HnppData_UserProfiles">
+          <End Type="AppModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="AppModel.HnppData" Role="HnppData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HnppData">
+              <PropertyRef Name="InsertedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Roles_RoleDefaultPages">
+          <End Type="AppModel.RoleDefaultPage" Role="RoleDefaultPage" Multiplicity="1" />
+          <End Type="AppModel.Role" Role="Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleDefaultPage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="RoleDefaultPageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RoleFeatures_dbo_Roles_RoleId">
+          <End Type="AppModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="AppModel.RoleFeature" Role="RoleFeature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoleFeature">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserProfiles_dbo_Roles_RoleId">
+          <End Type="AppModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="AppModel.UserProfile" Role="UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SummerizedData_StandingDatas">
+          <End Type="AppModel.StandingData" Role="StandingData" Multiplicity="1" />
+          <End Type="AppModel.SummerizedData" Role="SummerizedData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SummerizedData">
+              <PropertyRef Name="SourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SummerizedData_StandingDatas1">
+          <End Type="AppModel.StandingData" Role="StandingData" Multiplicity="1" />
+          <End Type="AppModel.SummerizedData" Role="SummerizedData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SummerizedData">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SummerizedData_StandingDatas2">
+          <End Type="AppModel.StandingData" Role="StandingData" Multiplicity="1" />
+          <End Type="AppModel.SummerizedData" Role="SummerizedData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandingData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SummerizedData">
+              <PropertyRef Name="UpazillaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SummerizedData_UserProfiles">
+          <End Type="AppModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="AppModel.SummerizedData" Role="SummerizedData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SummerizedData">
+              <PropertyRef Name="InsertedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="AppModel" />
+        <Alias Key="Target" Value="AppModel.Store" />
+        <EntityContainerMapping CdmEntityContainer="AppModelContainer" StorageEntityContainer="AppModelStoreContainer">
+          <FunctionImportMapping FunctionImportName="SprProjectsUpdate" FunctionName="AppModel.Store.SprProjectsUpdate" />
+          <FunctionImportMapping FunctionImportName="SprMailSend" FunctionName="AppModel.Store.SprMailSend">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AppModel.SprMailSend_Result">
+                <ScalarProperty Name="addr" ColumnName="addr" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="sub" ColumnName="sub" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="DetailDatas">
+            <EntityTypeMapping TypeName="AppModel.DetailData">
+              <MappingFragment StoreEntitySet="DetailData">
+                <ScalarProperty Name="InsertedById" ColumnName="InsertedById" />
+                <ScalarProperty Name="CollectedBy" ColumnName="CollectedBy" />
+                <ScalarProperty Name="IsContact" ColumnName="IsContact" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsRespiratory" ColumnName="IsRespiratory" />
+                <ScalarProperty Name="IsBreadth" ColumnName="IsBreadth" />
+                <ScalarProperty Name="IsDryCough" ColumnName="IsDryCough" />
+                <ScalarProperty Name="IsFever" ColumnName="IsFever" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UpazillaId" ColumnName="UpazillaId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DistrictByUserProfiles">
+            <EntityTypeMapping TypeName="AppModel.DistrictByUserProfile">
+              <MappingFragment StoreEntitySet="DistrictByUserProfiles">
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="UserInfoId" ColumnName="UserInfoId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DistrictDatas">
+            <EntityTypeMapping TypeName="AppModel.DistrictData">
+              <MappingFragment StoreEntitySet="DistrictData">
+                <ScalarProperty Name="MaternalCount" ColumnName="MaternalCount" />
+                <ScalarProperty Name="BreathingPatientCount" ColumnName="BreathingPatientCount" />
+                <ScalarProperty Name="OtherPatientCount" ColumnName="OtherPatientCount" />
+                <ScalarProperty Name="IcuCount" ColumnName="IcuCount" />
+                <ScalarProperty Name="BedCount" ColumnName="BedCount" />
+                <ScalarProperty Name="HospitalCount" ColumnName="HospitalCount" />
+                <ScalarProperty Name="ReliefRemarks" ColumnName="ReliefRemarks" />
+                <ScalarProperty Name="TillCurrentQuarantine" ColumnName="TillCurrentQuarantine" />
+                <ScalarProperty Name="TillDeath" ColumnName="TillDeath" />
+                <ScalarProperty Name="TillDoTestOn" ColumnName="TillDoTestOn" />
+                <ScalarProperty Name="TillReleasedQuarantine" ColumnName="TillReleasedQuarantine" />
+                <ScalarProperty Name="TillQuarantine" ColumnName="TillQuarantine" />
+                <ScalarProperty Name="Soap" ColumnName="Soap" />
+                <ScalarProperty Name="Oil" ColumnName="Oil" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Onion" ColumnName="Onion" />
+                <ScalarProperty Name="Money" ColumnName="Money" />
+                <ScalarProperty Name="Potato" ColumnName="Potato" />
+                <ScalarProperty Name="Dal" ColumnName="Dal" />
+                <ScalarProperty Name="Rice" ColumnName="Rice" />
+                <ScalarProperty Name="ReliefPerson" ColumnName="ReliefPerson" />
+                <ScalarProperty Name="ReliefFamily" ColumnName="ReliefFamily" />
+                <ScalarProperty Name="BracThink" ColumnName="BracThink" />
+                <ScalarProperty Name="MemberUpazillaCount" ColumnName="MemberUpazillaCount" />
+                <ScalarProperty Name="MemberCount" ColumnName="MemberCount" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="BracDo" ColumnName="BracDo" />
+                <ScalarProperty Name="NeedyPeople" ColumnName="NeedyPeople" />
+                <ScalarProperty Name="NgoDoing" ColumnName="NgoDoing" />
+                <ScalarProperty Name="SocialIssue" ColumnName="SocialIssue" />
+                <ScalarProperty Name="Panic" ColumnName="Panic" />
+                <ScalarProperty Name="Demand" ColumnName="Demand" />
+                <ScalarProperty Name="LocalAdminMeasure" ColumnName="LocalAdminMeasure" />
+                <ScalarProperty Name="InsertedById" ColumnName="InsertedById" />
+                <ScalarProperty Name="Death" ColumnName="Death" />
+                <ScalarProperty Name="DoTestOn" ColumnName="DoTestOn" />
+                <ScalarProperty Name="ReleasedQuarantine" ColumnName="ReleasedQuarantine" />
+                <ScalarProperty Name="NewQuarantine" ColumnName="NewQuarantine" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DistrictSummeries">
+            <EntityTypeMapping TypeName="AppModel.DistrictSummery">
+              <MappingFragment StoreEntitySet="DistrictSummery">
+                <ScalarProperty Name="MaternalCount" ColumnName="MaternalCount" />
+                <ScalarProperty Name="BreathingPatientCount" ColumnName="BreathingPatientCount" />
+                <ScalarProperty Name="OtherPatientCount" ColumnName="OtherPatientCount" />
+                <ScalarProperty Name="TotalSoap" ColumnName="TotalSoap" />
+                <ScalarProperty Name="TotalOil" ColumnName="TotalOil" />
+                <ScalarProperty Name="TotalSalt" ColumnName="TotalSalt" />
+                <ScalarProperty Name="TotalOnion" ColumnName="TotalOnion" />
+                <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
+                <ScalarProperty Name="TotalPotato" ColumnName="TotalPotato" />
+                <ScalarProperty Name="TotalDal" ColumnName="TotalDal" />
+                <ScalarProperty Name="TotalRice" ColumnName="TotalRice" />
+                <ScalarProperty Name="TotalReliefPerson" ColumnName="TotalReliefPerson" />
+                <ScalarProperty Name="TotalReliefFamily" ColumnName="TotalReliefFamily" />
+                <ScalarProperty Name="TotalDeath" ColumnName="TotalDeath" />
+                <ScalarProperty Name="TotalDoTestOn" ColumnName="TotalDoTestOn" />
+                <ScalarProperty Name="CurrentQuarantine" ColumnName="CurrentQuarantine" />
+                <ScalarProperty Name="TotalReleased" ColumnName="TotalReleased" />
+                <ScalarProperty Name="TotalQuarantine" ColumnName="TotalQuarantine" />
+                <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
+                <ScalarProperty Name="InsertedById" ColumnName="InsertedById" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IcuCount" ColumnName="IcuCount" />
+                <ScalarProperty Name="BedCount" ColumnName="BedCount" />
+                <ScalarProperty Name="HospitalCount" ColumnName="HospitalCount" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Features">
+            <EntityTypeMapping TypeName="AppModel.Feature">
+              <MappingFragment StoreEntitySet="Features">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HnppDatas">
+            <EntityTypeMapping TypeName="AppModel.HnppData">
+              <MappingFragment StoreEntitySet="HnppData">
+                <ScalarProperty Name="InsertedById" ColumnName="InsertedById" />
+                <ScalarProperty Name="Sticker" ColumnName="Sticker" />
+                <ScalarProperty Name="Leaflet" ColumnName="Leaflet" />
+                <ScalarProperty Name="GovtParticipant" ColumnName="GovtParticipant" />
+                <ScalarProperty Name="GovtMeeting" ColumnName="GovtMeeting" />
+                <ScalarProperty Name="BracParticipant" ColumnName="BracParticipant" />
+                <ScalarProperty Name="BracMeeting" ColumnName="BracMeeting" />
+                <ScalarProperty Name="CaseCnt" ColumnName="CaseCnt" />
+                <ScalarProperty Name="RiskByAM" ColumnName="RiskByAM" />
+                <ScalarProperty Name="RiskByPA" ColumnName="RiskByPA" />
+                <ScalarProperty Name="RiskByPK" ColumnName="RiskByPK" />
+                <ScalarProperty Name="RiskBySK" ColumnName="RiskBySK" />
+                <ScalarProperty Name="RiskBySS" ColumnName="RiskBySS" />
+                <ScalarProperty Name="CollectedBy" ColumnName="CollectedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UpazillaId" ColumnName="UpazillaId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleDefaultPages">
+            <EntityTypeMapping TypeName="AppModel.RoleDefaultPage">
+              <MappingFragment StoreEntitySet="RoleDefaultPages">
+                <ScalarProperty Name="PageUrl" ColumnName="PageUrl" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleFeatures">
+            <EntityTypeMapping TypeName="AppModel.RoleFeature">
+              <MappingFragment StoreEntitySet="RoleFeatures">
+                <ScalarProperty Name="FeatureId" ColumnName="FeatureId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="AppModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RoleDefaultPageId" ColumnName="RoleDefaultPageId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StandingDatas">
+            <EntityTypeMapping TypeName="AppModel.StandingData">
+              <MappingFragment StoreEntitySet="StandingDatas">
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="StringValue" ColumnName="StringValue" />
+                <ScalarProperty Name="IntValue" ColumnName="IntValue" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SummerizedDatas">
+            <EntityTypeMapping TypeName="AppModel.SummerizedData">
+              <MappingFragment StoreEntitySet="SummerizedData">
+                <ScalarProperty Name="InsertedById" ColumnName="InsertedById" />
+                <ScalarProperty Name="CollectedBy" ColumnName="CollectedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ReachCount" ColumnName="ReachCount" />
+                <ScalarProperty Name="UpazillaId" ColumnName="UpazillaId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLoginLogs">
+            <EntityTypeMapping TypeName="AppModel.UserLoginLog">
+              <MappingFragment StoreEntitySet="UserLoginLog">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="PIN" ColumnName="PIN" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="AppModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfiles">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Pin" ColumnName="Pin" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QryRoleFeatures">
+            <EntityTypeMapping TypeName="AppModel.QryRoleFeature">
+              <MappingFragment StoreEntitySet="QryRoleFeatures">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FeatureId" ColumnName="FeatureId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

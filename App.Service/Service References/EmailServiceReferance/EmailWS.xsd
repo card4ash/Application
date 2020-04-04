@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://ws.imail.isoap.com/" targetNamespace="http://ws.imail.isoap.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="sendEmail" type="tns:sendEmail" />
+  <xs:element name="sendEmailResponse" type="tns:sendEmailResponse" />
+  <xs:complexType name="sendEmail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="jobs" type="tns:jobs" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="jobs">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appUserId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attachments" nillable="true" type="tns:attachment" />
+      <xs:element minOccurs="0" name="bccAddress" type="xs:string" />
+      <xs:element minOccurs="0" name="body" type="xs:string" />
+      <xs:element minOccurs="0" name="caption" type="xs:string" />
+      <xs:element minOccurs="0" name="ccAddress" type="xs:string" />
+      <xs:element name="complete" type="xs:boolean" />
+      <xs:element minOccurs="0" name="feedbackDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="feedbackEmail" type="xs:string" />
+      <xs:element minOccurs="0" name="feedbackName" type="xs:string" />
+      <xs:element name="feedbackSent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="fromAddress" type="xs:string" />
+      <xs:element minOccurs="0" name="fromText" type="xs:string" />
+      <xs:element minOccurs="0" name="gateway" type="xs:string" />
+      <xs:element minOccurs="0" name="jobContentType" type="xs:string" />
+      <xs:element minOccurs="0" name="jobId" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="jobRecipients" nillable="true" type="tns:jobRecipients" />
+      <xs:element minOccurs="0" name="mode" type="xs:string" />
+      <xs:element minOccurs="0" name="numberOfItem" type="xs:int" />
+      <xs:element minOccurs="0" name="numberOfItemFailed" type="xs:int" />
+      <xs:element minOccurs="0" name="numberOfItemSent" type="xs:int" />
+      <xs:element minOccurs="0" name="priority" type="xs:string" />
+      <xs:element minOccurs="0" name="requester" type="xs:string" />
+      <xs:element minOccurs="0" name="status" type="xs:string" />
+      <xs:element minOccurs="0" name="subject" type="xs:string" />
+      <xs:element minOccurs="0" name="toAddress" type="xs:string" />
+      <xs:element minOccurs="0" name="toText" type="xs:string" />
+      <xs:element minOccurs="0" name="udValue1" type="xs:string" />
+      <xs:element minOccurs="0" name="udValue2" type="xs:string" />
+      <xs:element minOccurs="0" name="udValue3" type="xs:string" />
+      <xs:element minOccurs="0" name="udValue4" type="xs:string" />
+      <xs:element minOccurs="0" name="udValue5" type="xs:string" />
+      <xs:element minOccurs="0" name="udValue6" type="xs:string" />
+      <xs:element minOccurs="0" name="udValue7" type="xs:string" />
+      <xs:element minOccurs="0" name="vtemplate" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="attachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="extension" type="xs:string" />
+      <xs:element minOccurs="0" name="file" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="fileName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="jobRecipients">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="failCount" type="xs:int" />
+      <xs:element minOccurs="0" name="image" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="jobDetailId" type="xs:long" />
+      <xs:element minOccurs="0" name="recipientEmail" type="xs:string" />
+      <xs:element minOccurs="0" name="recipientType" type="xs:string" />
+      <xs:element name="sent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="sentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="toText" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendEmailResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="responseMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" type="xs:string" />
+      <xs:element name="jobId" type="xs:long" />
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+      <xs:element name="status" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

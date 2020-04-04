@@ -1,0 +1,43 @@
+﻿@using AppProj.Web;
+@using AppProj.Web.Helpers;
+@model AppProj.Web.Models.UserProfileModel
+<table id="Details" class="text" border="0" cellpadding="4" cellspacing="3" width="100%">    
+    <tr>
+        <td colspan="2" class="control">
+            <img alt="" src="@Url.Action("GetImage", "UserProfile")?id=@Model.Id"/>
+        </td>
+    </tr>
+    <tr>
+        <td width="20%" class="title">
+            @Html.LabelFor(model => model.UserName)
+        </td>
+        <td class="control">
+            @Html.DisplayFor(model => model.UserName)
+        </td>
+    </tr>
+    <tr>
+        <td width="20%" class="title">
+            @Html.LabelFor(model => model.Pin)
+        </td>
+        <td class="control">
+            @Html.DisplayFor(model => model.Pin)
+        </td>
+    </tr>
+    <tr>
+        <td width="20%" class="title">
+            @Html.LabelFor(model => model.EmailAddress)
+        </td>
+        <td class="control">
+            @Html.DisplayFor(model => model.EmailAddress)
+        </td>
+    </tr> 
+    <tr>
+        <td width="20%" class="title">
+            @Html.LabelFor(model => model.IsActive)
+        </td>
+        <td class="control">
+            @Html.Raw(Model.IsActive?"Yes":"No")
+        </td>
+    </tr>    
+</table>
+

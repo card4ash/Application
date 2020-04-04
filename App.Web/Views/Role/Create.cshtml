@@ -1,0 +1,65 @@
+﻿@model AppProj.Web.Models.RoleModel
+@{
+    var ajaxOpt = new AjaxOptions
+    {
+        HttpMethod = "GET",
+        UpdateTargetId = "dialog1Body",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "openDialog1('Role Save')",
+        LoadingElementId = "loading",
+        OnFailure = "failure",
+        Confirm = "Do you want to continue?"
+    };
+}
+@using (Ajax.BeginForm("Save", "Role", ajaxOpt ))
+{
+    @Html.ValidationSummary(true)
+    if (Model != null)
+    {
+        @Html.HiddenFor(m => m.Id)        
+    }
+    <table class="text" border="0" cellpadding="4" cellspacing="3" width="100%">
+        <tr>
+            <td class="title">
+                Name
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.RoleName)
+                @Html.ValidationMessageFor(model => model.RoleName)
+            </td>
+        </tr>  
+           <tr>
+            <td class="title">
+                Default Page
+            </td>
+            <td class="control">
+                @Html.DropDownListFor(model => model.RoleDefaultPageId, Model.RoleDefaultPages)
+                @Html.ValidationMessageFor(model => model.RoleDefaultPageId)
+            </td>
+        </tr>      
+        <tr>
+            <td class="title">
+                Active
+            </td>
+            <td class="control">
+                @Html.CheckBoxFor(model => model.IsActive)
+                @Html.ValidationMessageFor(model => model.IsActive)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                Can Access All Projects?
+            </td>
+            <td class="control">
+                @Html.CheckBoxFor(model => model.CanAccessAllProjects)
+                @Html.ValidationMessageFor(model => model.CanAccessAllProjects)
+            </td>
+        </tr>
+    </table>
+    <p>
+        <input id="save-submit" type="submit" value="Save" class="btn btn-primary" />
+    </p>    
+}
+<script type="text/javascript">
+    ValidatateForm("form0");
+</script>

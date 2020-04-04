@@ -1,0 +1,82 @@
+﻿@model AppProj.Web.Models.DistrictSubmitSubModel
+@{
+    var ajaxOpt = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "dialog1Body",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "openDialog1('Save')",
+        LoadingElementId = "loading",
+        OnFailure = "failure"
+    };
+}
+@using (Ajax.BeginForm("CreateDetail", "DistrictSubmission", ajaxOpt))
+{
+    @Html.ValidationSummary(true)    
+<table class="table-striped">
+    <tr>
+        <td class="title">
+            বিভাগ
+        </td>
+        <td class="control">
+            @Html.DropDownListFor(model => model.DivisionId, Model.Divisions)
+            @Html.ValidationMessageFor(model => model.DivisionId)
+        </td>
+    </tr>
+    <tr>
+        <td class="title">
+            জেলা
+        </td>
+        <td class="control">
+            @Html.DropDownListFor(model => model.DistrictId, Model.Districts)
+            @Html.ValidationMessageFor(model => model.DistrictId)
+        </td>
+    </tr>    
+    <tr>
+        <td class="title">
+            তারিখ
+        </td>
+        <td class="control">
+            @Html.TextBoxFor(model => model.Date, "{0:dd MMM, yyyy}", new { @class = "span2", @placeholder = "Date" })
+            @Html.ValidationMessageFor(model => model.Date)
+        </td>
+    </tr>    
+    <tr>
+        <td class="control">
+            <p>
+                <input id="save-submit" type="submit" value="নেক্সট" class="btn btn-primary" />
+            </p>
+        </td>
+    </tr>
+</table>
+
+}
+<script type="text/javascript">
+    ValidatateForm("form0");
+    $(document).ready(function () {
+
+        $("#save-submit").click(function () {
+            
+        });
+
+        $('#DivisionId').change(function (event) {
+            LoadUpazialSearch($('#DivisionId').val());
+        });
+
+        window.LoadUpazialSearch = function (areaId) {
+                var url = '@Url.Content("~/Main/GetDistrictByDivision")?id=' + areaId;
+            LoadDropDownListWithCall('DistrictId'
+                    , url
+                    , null
+                    , null);
+        }
+
+        $('#Date').datepicker({
+            format: "dd M, yyyy",
+            autoclose: true,
+            endDate: '+0d',
+            startDate: null
+        });
+
+    });
+</script>

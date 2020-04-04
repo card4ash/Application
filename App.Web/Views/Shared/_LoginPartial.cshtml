@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/styles")
+
+</head>
+@using AppProj.Web.Controllers;
+@using AppProj.Web;
+@using AppProj.Web.Helpers;
+@{
+    var ajaxOpt = new AjaxOptions
+    {
+        UpdateTargetId = "MainBody",
+        LoadingElementId = "loading",
+        OnFailure = "failure"
+    };   
+}
+<body>
+    <div class="container">
+
+
+        <div class="row">
+            <div class="span12">
+                <div class="header-top">
+                    <div class="header-wrapper">
+                        <div class="span2">
+                            <a href="#" class="utopia-logo">
+                                <img style="padding-top:10px;" src="~/Content/logo/@ViewBag.Logo" /></a>
+                        </div>
+                        <div class="span6">
+                            <h3 style="text-align: center;">
+                                @ViewBag.Header</h3>
+                        </div>
+                        <div class="header-right">
+                            <div class="header-divider">&nbsp;</div>
+                            <div class="user-panel header-divider">
+                                <div class="user-info">
+                                    <img src="img/icons/user.png" alt="">
+                                    <a href="#">@SessionHelper.UserName</a>
+                                </div>
+                                <div class="user-dropbox">
+                                    <ul>
+                                        <li>@Html.ActionLink("Sign Out", "LogOff", "Home", null, new { @style = "color: #f00" })</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="pull-right" style="margin-top: 15px; margin-right: 10px;">
+                                @Html.ActionLink("Exit", "Index", "Main", null, new { @class = "btn btn-warning" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @RenderBody()
+        </div>
+        <hr>
+        <footer>
+            <p class="pull-right muted"><small>eConstruction © @DateTime.Now.Year, </small>BRAC ICT</p>
+        </footer>
+    </div>
+    @Html.Partial("_LayoutPartial")
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/utopia")
+
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            KeepSessionAlive('@Url.Content("~/Home/HeartBeat")');
+        });
+
+    </script>
+</body>
+</html>

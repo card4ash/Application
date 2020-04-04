@@ -1,0 +1,66 @@
+﻿@{
+    var ajaxOpt = new AjaxOptions
+    {
+        UpdateTargetId = "MainBody",
+        LoadingElementId = "loading",
+        OnFailure = "failure"
+    };   
+}
+<div id="loading" class="loading" style="display: none;">
+    <p style="padding-top: 35px;">
+        Loading...
+    </p>
+</div>
+<div id="dialog1" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="dialog1Label"
+    aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal" aria-hidden="true">×</a>
+        <h3 id="dialog1Label"></h3>
+    </div>
+    <div id="dialog1Body" class="modal-body">
+
+    </div>
+</div>
+<div id="dialog2" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="dialog2Label"
+    aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal" aria-hidden="true">×</a>
+        <h3 id="dialog2Label"></h3>
+    </div>
+    <div id="dialog2Body" class="modal-body">
+    </div>
+</div>
+<div id="errorModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+    aria-hidden="true">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal" aria-hidden="true">×</a>
+        <h3 id="errorModalLabel">Error</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-error">
+            Your <strong>session has exired</strong> or an error occured at server.
+        </div>
+        <div class="alert alert-block">
+            Step 1 : Click on @Html.ActionLink("Sign Out", "LogOff", "Home", null, new { @class = "btn btn-mini btn-warning" })
+            and do signin again
+            <br />
+            Step 2 : Try to do your job which has created error
+        </div>
+        <div class="alert alert-info">
+            If it does not work properly, please enter an @Ajax.ActionLink("incedence", "Support", "Main", ajaxOpt, new { @class = "btn btn-mini btn-info" })
+            We will solve it immediately
+        </div>
+    </div>
+</div>
+<div id="disconnectedModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="disconnectedModalLabel"
+    aria-hidden="true">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal" aria-hidden="true">×</a>
+        <h3 id="disconnectedModalLabel">Error</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-error">
+            Your network<strong> has disconnected</strong> or failed to communicate with server.
+        </div>
+    </div>
+</div>

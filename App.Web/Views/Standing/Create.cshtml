@@ -1,0 +1,57 @@
+﻿@model AppProj.Web.Models.StandingDataModel
+@{
+    var ajaxOpt = new AjaxOptions
+    {
+        HttpMethod = "GET",
+        UpdateTargetId = "dialog1Body",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "openDialog1('Standing Data Save')",
+        LoadingElementId = "loading",
+        OnFailure = "failure",
+        Confirm = "Do you want to continue?"
+    };
+}
+@using (Ajax.BeginForm("Save", "Standing", ajaxOpt))
+{
+    @Html.ValidationSummary(true)
+    if (Model != null)
+    {
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.Type)
+    }
+    <table class="text" border="0" cellpadding="4" cellspacing="3" width="100%">
+        <tr>
+            <td class="title">
+                Name
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                Description
+            </td>
+            <td class="control">
+                @Html.TextAreaFor(model => model.StringValue)
+                @Html.ValidationMessageFor(model => model.StringValue)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                Active
+            </td>
+            <td class="control">
+                @Html.CheckBoxFor(model => model.IsActive)
+                @Html.ValidationMessageFor(model => model.IsActive)
+            </td>
+        </tr>        
+    </table>
+    <p>
+        <input id="save-submit" type="submit" value="Save" class="btn btn-primary" />
+    </p>
+}
+<script type="text/javascript">
+    ValidatateForm("form0");
+</script>

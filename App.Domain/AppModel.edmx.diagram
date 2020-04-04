@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="31efdc5f07f24a83abde93ff3c304cf2" Name="Diagram1" ZoomLevel="52" >
+        <EntityTypeShape EntityType="AppModel.DetailData" Width="1.5" PointX="3" PointY="17.5" />
+        <EntityTypeShape EntityType="AppModel.DistrictByUserProfile" Width="1.5" PointX="6" PointY="15.125" />
+        <EntityTypeShape EntityType="AppModel.DistrictData" Width="1.5" PointX="9" PointY="15.875" />
+        <EntityTypeShape EntityType="AppModel.DistrictSummery" Width="1.5" PointX="6" PointY="22.75" />
+        <EntityTypeShape EntityType="AppModel.Feature" Width="1.5" PointX="1.5" PointY="2.125" />
+        <EntityTypeShape EntityType="AppModel.HnppData" Width="1.5" PointX="3" PointY="11.5" />
+        <EntityTypeShape EntityType="AppModel.RoleDefaultPage" Width="1.5" PointX="1.5" PointY="5.25" />
+        <EntityTypeShape EntityType="AppModel.RoleFeature" Width="1.5" PointX="3.75" PointY="8.125" />
+        <EntityTypeShape EntityType="AppModel.Role" Width="1.5" PointX="1.5" PointY="7.875" />
+        <EntityTypeShape EntityType="AppModel.StandingData" Width="1.5" PointX="0.75" PointY="17.25" />
+        <EntityTypeShape EntityType="AppModel.SummerizedData" Width="1.5" PointX="6" PointY="18.375" />
+        <EntityTypeShape EntityType="AppModel.UserLoginLog" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AppModel.UserProfile" Width="1.5" PointX="0.75" PointY="12.375" />
+        <EntityTypeShape EntityType="AppModel.QryRoleFeature" Width="1.5" PointX="3.75" PointY="3.75" />
+        <AssociationConnector Association="AppModel.FK_DetailData_StandingDatas" />
+        <AssociationConnector Association="AppModel.FK_DetailData_StandingDatas1" />
+        <AssociationConnector Association="AppModel.FK_DetailData_StandingDatas2" />
+        <AssociationConnector Association="AppModel.FK_DetailData_StandingDatas3" />
+        <AssociationConnector Association="AppModel.FK_DetailData_UserProfiles" />
+        <AssociationConnector Association="AppModel.FK_DistrictByUserProfiles_StandingDatas" />
+        <AssociationConnector Association="AppModel.FK_DistrictByUserProfiles_UserProfiles" />
+        <AssociationConnector Association="AppModel.FK_DistrictData_StandingDatas" />
+        <AssociationConnector Association="AppModel.FK_DistrictData_StandingDatas1" />
+        <AssociationConnector Association="AppModel.FK_DistrictData_UserProfiles" />
+        <AssociationConnector Association="AppModel.FK_DistrictSummery_StandingDatas" />
+        <AssociationConnector Association="AppModel.FK_DistrictSummery_StandingDatas1" />
+        <AssociationConnector Association="AppModel.FK_DistrictSummery_UserProfiles" />
+        <AssociationConnector Association="AppModel.FK_dbo_RoleFeatures_dbo_Features_FeatureId" />
+        <AssociationConnector Association="AppModel.FK_HnppData_StandingDatas1" />
+        <AssociationConnector Association="AppModel.FK_HnppData_StandingDatas2" />
+        <AssociationConnector Association="AppModel.FK_HnppData_UserProfiles" />
+        <AssociationConnector Association="AppModel.FK_Roles_RoleDefaultPages" />
+        <AssociationConnector Association="AppModel.FK_dbo_RoleFeatures_dbo_Roles_RoleId" />
+        <AssociationConnector Association="AppModel.FK_dbo_UserProfiles_dbo_Roles_RoleId" />
+        <AssociationConnector Association="AppModel.FK_SummerizedData_StandingDatas" />
+        <AssociationConnector Association="AppModel.FK_SummerizedData_StandingDatas1" />
+        <AssociationConnector Association="AppModel.FK_SummerizedData_StandingDatas2" />
+        <AssociationConnector Association="AppModel.FK_SummerizedData_UserProfiles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

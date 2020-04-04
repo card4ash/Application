@@ -1,0 +1,90 @@
+﻿<section class="utopia-widget">
+    <div class="utopia-widget-title">
+        <img src="/Content/img/icons/satellite.png" class="utopia-widget-icon">
+        <span>Project Map</span>
+    </div>
+    <div class="utopia-widget-content">
+        <div class="utopia-map-wrapper">
+            <div id="map" class="utopia-map"></div>
+            <div class="utopia-map-details">
+                <div class="utopia-map-description">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et tempus elit.
+                                                                Duis pharetra blandit risus, a condimentum ipsum ultricies nec.
+                    </p>
+                </div>
+                <div class="utopia-map-action" style="margin-top: 4px;">
+                    <table style="color: white; margin-left: 62px;">
+                        <tr>
+                            <td class="muted" style="padding-right: 10px">
+                                <img style="width: 30px" src="http://maps.google.com/mapfiles/ms/icons/green-dot.png" /><br />
+                                Running</td>
+                            <td class="muted">
+                                <img style="width: 30px;" src="http://maps.google.com/mapfiles/ms/icons/red-dot.png" /><br />
+                                Closed<br />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<script type="text/javascript">
+
+    function PrepareMap() {
+        $.ajax({
+            cache: false,
+            url: '@Url.Content("~/Project/AllProjects")',
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                if (data != null) {
+                    Map(data);
+                }
+            }
+        });
+    }
+    function Map(locations) {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 6,
+            center: new google.maps.LatLng(24.40, 90.32),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+
+        var marker, i;
+
+        for (i = 0; i < locations.length; i++) {
+
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][2], locations[i][3]),
+                map: map
+            });
+
+            if (locations[i][4] == 'True') {
+                marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png')
+            }
+            else {
+                marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+            }
+
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent(locations[i][0] + "<br/>" + locations[i][1]);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+        }
+    }
+
+</script>
+@section scripts{
+
+}

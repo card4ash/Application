@@ -1,0 +1,198 @@
+﻿@using AppProj.Web.Helpers;
+@using AppProj.Web;
+@model AppProj.Web.Models.SearchModel
+@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    var ajaxOpt = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "dialog1Body",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "openDialog1('জেলা ভিত্তিক তথ্য')",
+        LoadingElementId = "loading",
+        OnFailure = "failure"
+    };
+}
+<section id="counter-social-icon" class="utopia-widget utopia-form-box">
+    <div class="utopia-widget-title">
+        <img class="utopia-widget-icon" style="margin: 15px 0 0 15px;" src="~/Content/img/icons2/connect.png">
+        <span>জেলার প্রতিদিনের  মন্তব্য (BDC)</span>
+    </div>
+    <div class="row-fluid">
+        <div class="utopia-widget-content main-container">
+
+            <div class="row-fluid pull-right">
+                <div class="row-fluid">
+                    <div class="pull-right">
+                        <a href="#">Total Records: <span id="iTotalRecords"></span></a>
+                        @if (UserRole.Check("DISTRICT", SessionHelper.Role))
+                        {
+                            @Ajax.ActionLink("তথ্য প্রদান ও পরিবর্তন", "Create", "DistrictSubmission", new { isOpeningAsset = false }, ajaxOpt, new { @class = "btn btn-success" })
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-fluid">
+                <div class="span3">
+                    <h3 class="pull-left muted font-head">বিভাগ: </h3>
+                    @Html.DropDownListFor(model => model.ContentTypeId1, Model.ContentTypes1, "All Division", new { @class = "ddl" })
+                </div>
+                <div class="span3">
+                    <h3 class="pull-left muted font-head">জেলা: </h3>
+                    @Html.DropDownListFor(model => model.ContentTypeId2, Model.ContentTypes2, "All Districts", new { @class = "ddl" })
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span4">
+                    <h3 class="pull-left muted font-head">অনুসন্ধানের শুরুর তারিখ: </h3>
+                    @Html.TextBoxFor(model => model.FromDate, "{0:dd MMM, yyyy}", new { @class = "input-small", @placeholder = "Date" })
+                </div>
+                <div class="span4">
+                    <h3 class="pull-left muted font-head">শেষ তারিখ </h3>
+                    @Html.TextBoxFor(model => model.ToDate, "{0:dd MMM, yyyy}", new { @class = "input-small", @placeholder = "Date" })
+
+                </div>
+                <div class="span2">
+                    <input type="hidden" id="isSum" name="isSum" value="false" />
+                    <a id="dateSearchButton" class="btn">সার্চ <i class="icon icon-search"></i></a>
+                    @*<a id="dateSearchButtonSum" class="btn">মোট তথ্য <i class="icon icon-search"></i></a>*@
+                </div>
+                <div class="span2">
+                    <a id="exp" href="#" class="btn pull-right">Export</a>
+                    <a id="prn" href="#" class="btn pull-right">Print</a>
+                </div>
+            </div>
+
+            <table id="gridTable" class="table table-striped table-bordered" style="width:100%;">
+                <thead>
+                    <tr>
+                        <th>
+                            ⇒বিভাগ<br />⇒জেলা<br />⇒তারিখ<br />⇒সদস্য
+                        </th>
+                        @*<th>
+                            কোয়ারেন্টাইন
+                        </th>
+                        <th>
+                            রিলিজ
+                        </th>
+                        <th>
+                            টেস্ট
+                        </th>
+                        <th>
+                            মৃত্যু
+                        </th>*@
+                        <th>
+                            স্থানীয় প্রশাসন কী ব্যবস্থা গ্রহণ করেছে?
+                        </th>
+                        <th>
+                            স্থানীয় প্রশাসন কর্তৃক ব্র্যাককে কী দাবি/অনুরোধ করা হয়েছে?
+                        </th>
+                        <th>
+                            কী আতঙ্ক সৃষ্টি হয়েছিল এবং আতঙ্কের প্রকৃতি?
+                        </th>
+                        <th>
+                            সামাজিক সমস্যা সমূহ
+                        </th>
+                        <th>
+                            ব্র্যাকের স্টাফদের অনুভূতি কী?
+                        </th>
+                        <th>
+                            এনজিওরা কী করছে?
+                        </th>
+                        <th>
+                            অভাবী মানুষের অবস্থা কী?
+                        </th>
+                        <th>
+                            ব্র্যাক কী করতে পারে?
+                        </th>
+                        <th>
+                            অন্য কোন সমস্যা / মন্তব্য
+                        </th>
+                        @*@if (UserRole.Check("DISTRICT", SessionHelper.Role))
+        {
+            <th></th>
+        }*@
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</section>
+@section scripts{
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#prn").click(function () {
+            $("#gridTable").printThis();
+        });
+
+        $("#exp").click(function () {
+            tableToExcel('gridTable', 'Export Name');
+        });
+
+            DatePicker('FromDate', 'dd MMM, yyyy');
+            DatePicker('ToDate', 'dd MMM, yyyy');
+
+            $(".ddl").change(function () {
+                $('#gridTable').dataTable().fnDraw();
+            });
+
+        $("#dateSearchButton").click(function () {
+            $("#isSum").val(false);
+            $('#gridTable').dataTable().fnDraw();
+        });
+
+        $("#dateSearchButtonSum").click(function () {
+            $("#isSum").val(true);
+            $('#gridTable').dataTable().fnDraw();
+        });
+
+            $('#ContentTypeId1').change(function (event) {
+                LoadDistrictSearch($('#ContentTypeId1').val());
+            });
+
+            @*$('#ContentTypeId2').change(function (event) {
+                LoadPointSearch($('#ContentTypeId2').val());
+            });*@
+
+        window.LoadDistrictSearch = function (areaId) {
+                var url = '@Url.Content("~/Main/GetDistrictByDivision")?id=' + areaId;
+                LoadDropDownListWithCall('ContentTypeId2'
+                    , url
+                    , 'All Districts'
+                    , null);
+            }
+
+            @*window.LoadPointSearch = function (locationId) {
+                var url = '@Url.Content("~/Point/GetPointsByLocation")?id=' + locationId;
+                LoadDropDownListWithCall('ContentTypeId3'
+                    , url
+                    , null
+                    , null);
+            }*@
+
+            var addPost = {
+                'ContentTypeId1': 'ContentTypeId1',
+                'ContentTypeId2': 'ContentTypeId2',
+                'FromDate': 'FromDate',
+                'ToDate': 'ToDate',
+                'isSum': 'isSum'
+            }
+            var btns = {
+                //9: false //column number : is button group
+            };
+
+            /*data grid initializer*/
+            DataTableBinder($("#gridTable")   //table object
+                , '@Url.Content("~/DistrictSubmission/DataGrid")'  //json data url
+                , [64, 128, 256] //record size
+                , false //show all with row size
+            , addPost  //additional parameters at query string
+            , btns   //buttons are at these columns
+            , true
+            );
+
+        });
+    </script>
+}

@@ -1,0 +1,358 @@
+﻿@model AppProj.Web.Models.DistrictSubmitModel
+@{
+    var ajaxOpt = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "dialog1Body",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "openDialog1('Save')",
+        LoadingElementId = "loading",
+        OnFailure = "failure"
+    };
+}
+@using (Ajax.BeginForm("Save", "DistrictSubmission", ajaxOpt))
+{
+    @Html.ValidationSummary(true)
+    if (Model != null)
+    {
+        @Html.HiddenFor(m => m.DetailId)
+        @Html.HiddenFor(m => m.SumId)
+        @Html.HiddenFor(m => m.DivisionId)
+        @Html.HiddenFor(m => m.DistrictId)
+        @Html.HiddenFor(m => m.Date)
+    }
+    <table class="table-striped" style="width:100%">
+        <tr>
+            <td class="title" style="width:25%;">
+                বিভাগ
+            </td>
+            <td class="control">
+                <h3>@Model.DivisionName</h3>
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                জেলা
+            </td>
+            <td class="control">
+                <h3>@Model.DistrictName</h3>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2">
+                <h3>মাসিক বা সাপ্তাহিক আপডেট</h3>
+            </th>
+        </tr>
+        <tr>
+            <td class="title">
+                হাসপাতালের সংখ্যা
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.HospitalCount)
+                @Html.ValidationMessageFor(model => model.HospitalCount)
+                টি
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                আইসোলেশন বেড সংখ্যা
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.BedCount)
+                @Html.ValidationMessageFor(model => model.BedCount)
+                টি
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                কোভিড ছাড়া অন্যান্য সেবা প্রাপ্ত রোগির সংখ্যা
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.OtherPatientCount)
+                @Html.ValidationMessageFor(model => model.OtherPatientCount)
+                টি
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                শ্বাস-কষ্ট সংক্রান্ত রোগির সেবা প্রাপ্তির সংখ্যা
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.BreathingPatientCount)
+                @Html.ValidationMessageFor(model => model.BreathingPatientCount)
+                টি
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                প্রসূতি স্বাস্থ্য সেবা কতজন নিয়েছেন
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.MaternalCount)
+                @Html.ValidationMessageFor(model => model.MaternalCount)
+                টি
+            </td>
+        </tr>
+        @*<tr>
+                <td class="title">
+                    DC, CS, UNO এর নেয়া উদ্যোগ
+                </td>
+                <td class="control">
+                    @Html.TextAreaFor(model => model.RemarksSum, new { @style = "width:100%;" })
+                    @Html.ValidationMessageFor(model => model.RemarksSum)
+                </td>
+            </tr>*@
+        <tr>
+            <th colspan="2">
+                <h3>আজকের দিনের তথ্য</h3>
+            </th>
+        </tr>
+        <tr>
+            <td class="title">
+                তারিখ
+            </td>
+            <td class="control">
+                @String.Format("{0:dd MMM, yyyy}", Model.Date)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                নতুন কোয়ারেন্টাইন
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.NewQuarantine)
+                @Html.ValidationMessageFor(model => model.NewQuarantine)
+                জন
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                কোয়ারেন্টাইন থেকে রিলিজড
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.ReleasedQuarantine)
+                @Html.ValidationMessageFor(model => model.ReleasedQuarantine)
+                জন
+            </td>
+        </tr>
+        @if (Model.DistrictTypeValue == 1)
+        {
+            <tr>
+                <td class="title">
+                    Covid-19 টেস্ট করা হয়েছে
+                </td>
+                <td class="control">
+                    @Html.TextBoxFor(model => model.DoTestOn)
+                    @Html.ValidationMessageFor(model => model.DoTestOn)
+                    জনের
+                </td>
+            </tr>
+        }
+        <tr>
+            <td class="title">
+                মৃত্যুর সংখ্যা
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.Death)
+                @Html.ValidationMessageFor(model => model.Death)
+                জন
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                সামাজিক নিরাপত্তা তথ্য
+            </td>
+            <td>
+                <table class="table-striped">
+                    <tr>
+                        <th>রিলিফ প্রদান</th>
+                        <th colspan="5">মোট বিতরণ </th>
+                    </tr>
+                    <tr>
+                        <td> পরিবার </td>
+                        @*<td> ব্যক্তি </td>*@
+                        <td> চাল </td>
+                        <td> ডাল </td>
+                        <td> আলু </td>
+                        <td> টাকা</td>
+                        <td> অন্নান্য </td>
+                        @*<td>পেঁয়াজ</td>
+                        <td>লবন </td>
+                        <td>তেল </td>
+                        <td>সাবান </td>*@
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.TextBoxFor(model => model.ReliefFamily, new { @style = "width:60px;" })
+                            @Html.ValidationMessageFor(model => model.ReliefFamily)
+                        </td>
+                        @*<td>
+            @Html.TextBoxFor(model => model.ReliefPerson, new { @style = "width:60px;" })
+            @Html.ValidationMessageFor(model => model.ReliefPerson)
+        </td>*@
+                        <td>
+                            @Html.TextBoxFor(model => model.Rice, new { @style = "width:60px;" })মেঃ টন
+                            @Html.ValidationMessageFor(model => model.Rice)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(model => model.Dal, new { @style = "width:60px;" })মেঃ টন
+                            @Html.ValidationMessageFor(model => model.Dal)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(model => model.Potato, new { @style = "width:60px;" })মেঃ টন
+                            @Html.ValidationMessageFor(model => model.Potato)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(model => model.Money, new { @style = "width:60px;" })টাকা
+                            @Html.ValidationMessageFor(model => model.Money)
+                        </td>
+                        <td>
+                            @Html.TextAreaFor(model => model.ReliefRemarks, new { @style = "width:100%;" })টাকা
+                            @Html.ValidationMessageFor(model => model.ReliefRemarks)
+                        </td>
+                        @*<td>
+            @Html.TextBoxFor(model => model.Onion, new { @style = "width:60px;" })মেঃ টন
+            @Html.ValidationMessageFor(model => model.Onion)
+        </td>
+        <td>
+            @Html.TextBoxFor(model => model.Salt, new { @style = "width:60px;" })মেঃ টন
+            @Html.ValidationMessageFor(model => model.Salt)
+        </td>
+        <td>
+            @Html.TextBoxFor(model => model.Oil, new { @style = "width:60px;" })মেঃ টন
+            @Html.ValidationMessageFor(model => model.Oil)
+        </td>
+        <td>
+            @Html.TextBoxFor(model => model.Soap, new { @style = "width:60px;" })মেঃ টন
+            @Html.ValidationMessageFor(model => model.Soap)
+        </td>*@
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                স্থানীয় প্রশাসন কী ব্যবস্থা গ্রহণ করেছে?
+            </td>
+            <td class="control">
+                @Html.TextAreaFor(model => model.LocalAdminMeasure, new { @style = "width:100%;" })
+                @Html.ValidationMessageFor(model => model.LocalAdminMeasure)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                স্থানীয় প্রশাসন কর্তৃক ব্র্যাককে কী দাবি/অনুরোধ করা হয়েছে?
+            </td>
+            <td class="control">
+                @Html.TextAreaFor(model => model.Demand, new { @style = "width:100%;" })
+                @Html.ValidationMessageFor(model => model.Demand)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                কী আতঙ্ক সৃষ্টি হয়েছিল এবং আতঙ্কের প্রকৃতি?
+            </td>
+            <td class="control">
+                @Html.TextAreaFor(model => model.Panic, new { @style = "width:100%;" })
+                @Html.ValidationMessageFor(model => model.Panic)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                সামাজিক সমস্যা সমূহ
+            </td>
+            <td class="control">
+                @Html.TextAreaFor(model => model.SocialIssue, new { @style = "width:100%;" })
+                @Html.ValidationMessageFor(model => model.SocialIssue)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                ব্র্যাকের স্টাফদের অনুভূতি কী?
+            </td>
+            <td class="control">
+                @Html.TextAreaFor(model => model.BracThink, new { @style = "width:100%;" })
+                @Html.ValidationMessageFor(model => model.BracThink)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                এনজিওরা কী করছে?
+            </td>
+            <td class="control">
+                @Html.TextAreaFor(model => model.NgoDoing, new { @style = "width:100%;" })
+                @Html.ValidationMessageFor(model => model.NgoDoing)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                অভাবী মানুষের অবস্থা কী?
+            </td>
+            <td class="control">
+                @Html.TextAreaFor(model => model.NeedyPeople, new { @style = "width:100%;" })
+                @Html.ValidationMessageFor(model => model.NeedyPeople)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                ব্র্যাক কী করতে পারে?
+            </td>
+            <td class="control">
+                @Html.TextAreaFor(model => model.BracDo, new { @style = "width:100%;" })
+                @Html.ValidationMessageFor(model => model.BracDo)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                অন্য কোন সমস্যা / মন্তব্য
+            </td>
+            <td class="control">
+                @Html.TextAreaFor(model => model.RemarksDetail, new { @style = "width:100%;" })
+                @Html.ValidationMessageFor(model => model.RemarksDetail)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                জেলায় Covid-19 সদস্য
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.MemberCount)
+                @Html.ValidationMessageFor(model => model.MemberCount)
+                জন
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                উপজেলায় Covid-19 সদস্য
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.MemberUpazillaCount)
+                @Html.ValidationMessageFor(model => model.MemberUpazillaCount)
+                জন
+            </td>
+        </tr>
+        <tr>
+            <td class="control">
+                <p>
+                    <input id="save-submit" type="submit" value="সেভ করুন" class="btn btn-primary" />
+                </p>
+            </td>
+        </tr>
+    </table>
+
+}
+<script type="text/javascript">
+    ValidatateForm("form0");
+    $(document).ready(function () {
+
+        $("#save-submit").click(function () {
+
+            if (!confirm("Do you want to Save?")) {
+                return false;
+            }
+
+        });
+
+
+    });
+</script>

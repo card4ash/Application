@@ -1,0 +1,219 @@
+﻿@model AppProj.Web.Models.SubmitModel
+@{
+    var ajaxOpt = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "dialog1Body",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "openDialog1('Save')",
+        LoadingElementId = "loading",
+        OnFailure = "failure"
+    };
+}
+@using (Ajax.BeginForm("Save", "HnppSubmission", ajaxOpt))
+{
+    @Html.ValidationSummary(true)
+    if (Model != null)
+    {
+        @Html.HiddenFor(m => m.Id)
+    }
+    <table class="table-striped">
+
+        <tr>
+            <td class="title">
+                জেলা
+            </td>
+            <td class="control">
+                @Html.DropDownListFor(model => model.DistrictId, Model.Districts)
+                @Html.ValidationMessageFor(model => model.DistrictId)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                উপজেলা / থানা
+            </td>
+            <td class="control">
+                @Html.DropDownListFor(model => model.UpazillaId, Model.Upazillas)
+                @Html.ValidationMessageFor(model => model.UpazillaId)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                তারিখ
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.Date, "{0:dd MMM, yyyy}", new { @class = "span2", @placeholder = "Date" })
+                @Html.ValidationMessageFor(model => model.Date)
+            </td>
+        </tr>
+        <tr>
+            <th class="title" colspan="2">
+                সচেতনতা কাউন্সেলিং
+            </th>
+        </tr>
+        <tr>
+            <td class="title">
+                SS
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.RiskBySS)
+                @Html.ValidationMessageFor(model => model.RiskBySS)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                SK
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.RiskBySK)
+                @Html.ValidationMessageFor(model => model.RiskBySK)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                PK
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.RiskByPK)
+                @Html.ValidationMessageFor(model => model.RiskByPK)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                PA
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.RiskByPA)
+                @Html.ValidationMessageFor(model => model.RiskByPA)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                AM
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.RiskByAM)
+                @Html.ValidationMessageFor(model => model.RiskByAM)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                লিফলেট বিতরণ
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.Leaflet)
+                @Html.ValidationMessageFor(model => model.Leaflet)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                স্টিকার বিতরণ
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.Sticker)
+                @Html.ValidationMessageFor(model => model.Sticker)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                কেস সংখ্যা
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.CaseCnt)
+                @Html.ValidationMessageFor(model => model.CaseCnt)
+            </td>
+        </tr>
+        <tr>
+            <th class="title" colspan="2">
+                ব্র্যাক সমন্বয় মিটিং
+            </th>
+        </tr>
+        <tr>
+            <td class="title">
+                মিটিং সংখ্যা
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.BracMeeting)
+                @Html.ValidationMessageFor(model => model.BracMeeting)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                অংশহগ্রহণকারী
+            </td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.BracParticipant)
+                @Html.ValidationMessageFor(model => model.BracParticipant)
+            </td>
+        </tr>
+        <tr>
+            <th class="title" colspan="2">
+                সরকারী সমন্বয় মিটিং
+            </th>
+        </tr>
+        <tr>
+            <td class="title">মিটিং সংখ্যা</td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.GovtMeeting)
+                @Html.ValidationMessageFor(model => model.GovtMeeting)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">অংশহগ্রহণকারী</td>
+            <td class="control">
+                @Html.TextBoxFor(model => model.GovtParticipant)
+                @Html.ValidationMessageFor(model => model.GovtParticipant)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                মন্তব্য
+            </td>
+            <td class="control">
+                @Html.TextAreaFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </td>
+        </tr>
+        <tr>
+            <td class="control">
+                <p>
+                    <input id="save-submit" type="submit" value="সেভ করুন" class="btn btn-primary" />
+                </p>
+            </td>
+        </tr>
+    </table>
+
+}
+<script type="text/javascript">
+    ValidatateForm("form0");
+    $(document).ready(function () {
+
+        $("#save-submit").click(function () {
+
+            if (!confirm("Do you want to Save?")) {
+                return false;
+            }
+
+        });
+
+        $('#DistrictId').change(function (event) {
+            LoadUpazialSearch($('#DistrictId').val());
+        });
+
+        window.LoadUpazialSearch = function (areaId) {
+                var url = '@Url.Content("~/Main/GetUpazilaByDistrict")?id=' + areaId;
+            LoadDropDownListWithCall('UpazillaId'
+                    , url
+                    , null
+                    , null);
+        }
+
+        $('#Date').datepicker({
+            format: "dd M, yyyy",
+            autoclose: true,
+            endDate: '+0d',
+            startDate: null
+        });
+
+    });
+</script>

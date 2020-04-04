@@ -1,0 +1,25 @@
+﻿@model AppProj.Web.Models.RoleFeatureModel
+
+@using (Ajax.BeginForm("Save", "RoleFeature", new AjaxOptions { UpdateTargetId = "dialog1Body", LoadingElementId = "loading", Confirm = "Do you want to continue?", OnFailure = "failure" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.RoleId)
+   
+    <table class="text" border="0" cellpadding="4" cellspacing="3" width="100%">
+        <tr>
+            <td width="150px" class="title">
+                Rights
+            </td>
+            <td class="control">
+                @Html.DropDownList("FeatureId")
+                @Html.ValidationMessageFor(model => model.FeatureId)
+            </td>
+        </tr>
+    </table>
+    <p>
+        <input id="save-submit" type="submit" value="Add" class="btn btn-primary" />
+    </p>
+}
+<script type="text/javascript">
+    ValidatateForm("form0");
+</script>

@@ -1,0 +1,63 @@
+﻿
+table { border-collapse:collapse; border-spacing:0; } 
+fieldset, img { border:0; }
+a:focus { outline:none; border:0; }
+a img { vertical-align:text-bottom; } 
+address, caption, cite, code, dfn, em, th, var { font-style:normal; font-weight:normal; } 
+ol, ul { list-style:none; -webkit-padding-start:0; } 
+caption, th { text-align:left; }
+.clearfix:after { display: block; height:0; visibility:hidden; clear:both; content:"."; }
+*:first-child+html .clearfix { height:1%; }
+* html .clearfix { height:1%; }
+.clearfix { display:block; }
+.hid { display:none; }
+strong, b { font-weight:bold; }
+em, i { font-style:italic; }
+.clear { clear:both; }
+*:first-child+html img { vertical-align:text-bottom; }
+* html img { vertical-align:text-bottom; }
+
+
+a { color:#1d71b8; text-decoration:none; }
+a:hover { text-decoration:underline; }
+.to-left { float:left; margin:0 6px 6px 0; }
+
+#root { clear:both; position:relative; width:950px; margin:0 auto; }
+#body { position:relative; }
+			
+#left-side { padding:0 0 15px 0; }
+#content-side { padding:15px 0; border-top:1px solid #d8dadb; }
+#right-side { padding:15px 0; border-top:1px solid #d8dadb; }
+			
+h1 { margin:0 0 15px 0; font-weight:normal; font-size:28px; color:#474748; max-width:707px; }
+* html h1 { width:707px; }
+*:first-child+html h1 { clear:both; }
+h2 { margin:0 0 15px 0; font-weight:normal; font-size:24px; color:#939393; }
+h4 { margin:0 0 15px 0; color:#7e90b0; text-transform:uppercase; }
+ul { margin:0 0 15px 0; color:#474748; }
+	ul li { color:#474748; }
+#content-side ul { margin:0 0 15px 15px; overflow:hidden; }
+	#content-side ul li { padding: 0 0 5px 10px; background: url("../images/blueDarkBullet.gif") no-repeat scroll 0 5px transparent; }
+#content-side ol { margin:0 0 15px 15px; overflow:hidden; }
+	#content-side ol li { padding: 0 0 5px 0; color:#474748; list-style:decimal inside; }
+p { margin:0 0 15px 0;  color:#474748; }
+hr { margin:0 0 15px 0; border:0; border-top:1px solid #d8dadb; background:none; }
+
+#breadcrumb { padding:10px 0; }
+	#breadcrumb a { font-size:11px; color:#1d71b8; }
+	#breadcrumb span { font-size:11px; color:#808183; }
+	
+.download-panel, #right-side .download-panel { position:relative; padding:20px 15px 20px 95px; margin:0 0 15px 0; background:#022b5c; }
+	.download-panel .icon-link, #right-side .download-panel .icon-link { position:absolute; top:20px; left:15px; }
+	.download-panel h2, #right-side .download-panel h2 { margin:0 0 10px 0; font-weight:normal; font-size:15px; color:#c26528; text-transform:none; }
+	.download-panel p, #right-side .download-panel p { margin:0 0 10px 0; font-size:11px; color:#fff; }
+	.download-panel a, #right-side .download-panel a { font-size:10px; text-transform:uppercase; }
+
+.video-list h2 { text-align: left; color: #474748; font-weight: bold; margin: 30px 0 10px; }
+
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}

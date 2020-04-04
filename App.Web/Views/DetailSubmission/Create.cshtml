@@ -1,0 +1,187 @@
+﻿@model AppProj.Web.Models.SubmitModel
+@{
+    var ajaxOpt = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "dialog1Body",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "openDialog1('Save')",
+        LoadingElementId = "loading",
+        OnFailure = "failure"
+    };
+}
+@using (Ajax.BeginForm("Save", "DetailSubmission", ajaxOpt))
+{
+    @Html.ValidationSummary(true)
+    if (Model != null)
+    {
+        @Html.HiddenFor(m => m.Id)
+    }
+<table class="table-striped">
+    <tr>
+        <td class="title">
+            তথ্যের উৎস
+        </td>
+        <td class="control">
+            @Html.DropDownListFor(model => model.SourceId, Model.Sources)
+            @Html.ValidationMessageFor(model => model.SourceId)
+        </td>
+    </tr>
+    <tr>
+        <td class="title">
+            জেলা
+        </td>
+        <td class="control">
+            @Html.DropDownListFor(model => model.DistrictId, Model.Districts)
+            @Html.ValidationMessageFor(model => model.DistrictId)
+        </td>
+    </tr>
+    <tr>
+        <td class="title">
+            উপজেলা / থানা
+        </td>
+        <td class="control">
+            @Html.DropDownListFor(model => model.UpazillaId, Model.Upazillas)
+            @Html.ValidationMessageFor(model => model.UpazillaId)
+        </td>
+    </tr>
+    <tr>
+        <td class="title">
+            তারিখ
+        </td>
+        <td class="control">
+            @Html.TextBoxFor(model => model.Date, "{0:dd MMM, yyyy}", new { @class = "span2", @placeholder = "Date" })
+            @Html.ValidationMessageFor(model => model.Date)
+        </td>
+    </tr>
+    <tr>
+
+        <td class="title">
+            সম্ভাব্য রোগীর নাম
+        </td>
+        <td class="control">
+            @Html.TextBoxFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </td>
+    </tr>
+    <tr>
+        <td class="title">
+            বয়স
+        </td>
+        <td class="control">
+            @Html.TextBoxFor(model => model.Age)
+            @Html.ValidationMessageFor(model => model.Age)
+        </td>
+    </tr>
+    <tr>
+        <td class="title">
+            লিঙ্গ
+        </td>
+        <td class="control">
+            @Html.DropDownListFor(model => model.GenderId, Model.Genders)
+            @Html.ValidationMessageFor(model => model.GenderId)
+        </td>
+    </tr>
+    <tr>
+        <td class="title">
+            মোবাইল
+        </td>
+        <td class="control">
+            @Html.TextBoxFor(model => model.Phone)
+            @Html.ValidationMessageFor(model => model.Phone)
+        </td>
+    </tr>
+    <tr>
+        <td class="title">
+            জ্বর আছে ?
+        </td>
+        <td class="control">
+            @Html.CheckBoxFor(model => model.IsFever)
+        </td>
+    </tr>
+    <tr>
+
+        <td class="title">
+            শুকনো কাশি আছে ?
+        </td>
+        <td class="control">
+            @Html.CheckBoxFor(model => model.IsDryCough)
+        </td>
+    </tr>
+    <tr>
+        <td class="title">
+            শ্বাস কষ্ট আছে ?
+        </td>
+        <td class="control">
+            @Html.CheckBoxFor(model => model.IsBreadth)
+        </td>
+    </tr>
+    <tr>
+        <td class="title">
+            বিদেশ ফেরত অথবা করোনা আক্রান্ত এলাকায় ভ্রমণ করেছিল কি না ?
+        </td>
+        <td class="control">
+            @Html.CheckBoxFor(model => model.IsContact)
+        </td>
+    </tr>
+    <tr>
+        <td class="title">
+            পিন (যার কাছ থেকে ডাটা নেয়া হয়েছে )
+        </td>
+        <td class="control">
+            @Html.TextBoxFor(model => model.CollectedBy)
+            @Html.ValidationMessageFor(model => model.CollectedBy)
+        </td>
+    </tr>
+    <tr>
+        <td class="title">
+            মন্তব্য
+        </td>
+        <td class="control">
+            @Html.TextAreaFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </td>
+    </tr>
+    <tr>
+        <td class="control">
+            <p>
+                <input id="save-submit" type="submit" value="সেভ করুন" class="btn btn-primary" />
+            </p>
+        </td>
+    </tr>
+</table>
+
+}
+<script type="text/javascript">
+    ValidatateForm("form0");
+    $(document).ready(function () {
+
+        $("#save-submit").click(function () {
+
+            if (!confirm("Do you want to Save?")) {
+                return false;
+            }
+
+        });
+
+        $('#DistrictId').change(function (event) {
+            LoadUpazialSearch($('#DistrictId').val());
+        });
+
+        window.LoadUpazialSearch = function (areaId) {
+                var url = '@Url.Content("~/Main/GetUpazilaByDistrict")?id=' + areaId;
+            LoadDropDownListWithCall('UpazillaId'
+                    , url
+                    , null
+                    , null);
+        }
+
+        $('#Date').datepicker({
+            format: "dd M, yyyy",
+            autoclose: true,
+            endDate: '+0d',
+            startDate: null
+        });
+
+    });
+</script>

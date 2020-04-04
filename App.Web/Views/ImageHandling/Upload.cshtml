@@ -1,0 +1,68 @@
+﻿<script type="text/javascript">
+
+    function UploadImage() {
+
+        waitingDialog({ title: "Loading...." });
+        $("#hiddUpload").val("0");
+        $("#ImgForm").submit();
+    }
+
+    function UploadImage_Complete() {
+
+        var newImg = $.parseJSON($("#UploadTarget").contents().find("#jsonResult")[0].innerHTML);
+
+        //If there was an error, display it to the user
+        if (newImg.IsValid == false) {
+            $("#hiddUpload").val("0");
+            closeWaitingDialog();
+            alert(newImg.Message);
+            return;
+        }
+
+        $("#hiddUpload").val(newImg.ID);
+        closeWaitingDialog();
+        $("#imageFile").val("");
+
+        $('#Images').prepend('<div id="' + newImg.ID + '"> <img src=' + '@Url.Action("GetImageFromSession", "ImageHandling")' + "?guId=" + newImg.ID + '></br><input type="button" onclick="Remove(\'' + newImg.ID + '\')" value="Remove"></div>')
+    }
+
+    function Remove(id) {
+        $.ajax({
+            cache: false,
+            url: '@Url.Action("RemoveImageFromSession", "ImageHandling")' + "?guId=" + id,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                if (data == true) {
+                    $("#" + id).remove();
+                }
+                else {
+                    alert('Data not deleted');
+                }
+            },
+            error: function (x, e) {
+            }
+        });
+    }
+
+    $(document).ready(function () {
+
+    });
+
+</script>
+@using (Html.BeginForm("UploadSave", "ImageHandling", FormMethod.Post, new
+{
+    enctype = "multipart/form-data",
+    id = "ImgForm",
+    name = "ImgForm",
+    target = "UploadTarget"
+}))
+{
+    <input type="hidden" id="hiddUpload" value="0" />
+    <input type="file" id="imageFile" name="imageFile" />
+    <input type="button" value="Add New Picture" onclick="UploadImage()" />        
+}
+<iframe id="UploadTarget" name="UploadTarget" onload="UploadImage_Complete();" style="position: absolute;
+    left: -999em; top: -999em;"></iframe>
+<div id="Images">
+</div>

@@ -1,0 +1,51 @@
+﻿@model AppProj.Web.Models.UserProfileModel
+@{
+    var ajaxOpt = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "dialog1Body",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "openDialog1('User Saved')",
+        LoadingElementId = "loading",
+        OnFailure = "failure",
+        Confirm = "Do you want to continue?"
+    };
+}
+@using (Ajax.BeginForm("ResetPass", "UserProfile", ajaxOpt))
+{
+    @Html.ValidationSummary(true, "Change Failed", new { @class = "alert alert-error" })
+    @Html.HiddenFor(model => model.Id)
+
+    <table border="0" cellpadding="4" cellspacing="3" width="100%">
+
+        <tr>
+            <td class="title">
+                @Html.LabelFor(model => model.NewPassword)
+            </td>
+            <td class="control">
+                @Html.PasswordFor(model => model.NewPassword)
+                @Html.ValidationMessageFor(model => model.NewPassword)
+            </td>
+        </tr>
+        <tr>
+            <td class="title">
+                @Html.LabelFor(model => model.ConfirmNewPassword)
+            </td>
+            <td class="control">
+                @Html.PasswordFor(model => model.ConfirmNewPassword)
+                @Html.ValidationMessageFor(model => model.ConfirmNewPassword)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input id="save-submit" type="submit" value="Reset Password" class="btn btn-primary" />
+            </td>
+        </tr>
+    </table>
+
+}
+
+<script type="text/javascript">
+    ValidatateForm("form0");
+</script>

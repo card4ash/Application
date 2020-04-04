@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="BRACStaffs">
+        <s:complexType />
+      </s:element>
+      <s:element name="BRACStaffsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BRACStaffsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StaffInfoByPIN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strStaffPIN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StaffInfoByPINResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StaffInfoByPINResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StaffInfoByDepartment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="project">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Keys" type="tns:projectKeys" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProgramID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectDesc" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProjectYN" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SetDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectStatusTypeID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EffectiveDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="projectKeys">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="StaffInfoByDepartmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StaffInfoByDepartmentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StaffInfoByDepartmentAndStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:project" />
+            <s:element minOccurs="0" maxOccurs="1" name="StaffStatu" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StaffInfoByDepartmentAndStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StaffInfoByDepartmentAndStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getStaffInfoForMyBRAC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strStaffPIN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getStaffInfoForMyBRACResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getStaffInfoForMyBRACResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStaffInfoByEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmailID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStaffInfoByEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStaffInfoByEmailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStaffListByDesignation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DesGrpID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStaffListByDesignationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStaffListByDesignationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="BRACStaffsSoapIn">
+    <wsdl:part name="parameters" element="tns:BRACStaffs" />
+  </wsdl:message>
+  <wsdl:message name="BRACStaffsSoapOut">
+    <wsdl:part name="parameters" element="tns:BRACStaffsResponse" />
+  </wsdl:message>
+  <wsdl:message name="StaffInfoByPINSoapIn">
+    <wsdl:part name="parameters" element="tns:StaffInfoByPIN" />
+  </wsdl:message>
+  <wsdl:message name="StaffInfoByPINSoapOut">
+    <wsdl:part name="parameters" element="tns:StaffInfoByPINResponse" />
+  </wsdl:message>
+  <wsdl:message name="StaffInfoByDepartmentSoapIn">
+    <wsdl:part name="parameters" element="tns:StaffInfoByDepartment" />
+  </wsdl:message>
+  <wsdl:message name="StaffInfoByDepartmentSoapOut">
+    <wsdl:part name="parameters" element="tns:StaffInfoByDepartmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="StaffInfoByDepartmentAndStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:StaffInfoByDepartmentAndStatus" />
+  </wsdl:message>
+  <wsdl:message name="StaffInfoByDepartmentAndStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:StaffInfoByDepartmentAndStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="getStaffInfoForMyBRACSoapIn">
+    <wsdl:part name="parameters" element="tns:getStaffInfoForMyBRAC" />
+  </wsdl:message>
+  <wsdl:message name="getStaffInfoForMyBRACSoapOut">
+    <wsdl:part name="parameters" element="tns:getStaffInfoForMyBRACResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStaffInfoByEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStaffInfoByEmail" />
+  </wsdl:message>
+  <wsdl:message name="GetStaffInfoByEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStaffInfoByEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStaffListByDesignationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStaffListByDesignation" />
+  </wsdl:message>
+  <wsdl:message name="GetStaffListByDesignationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStaffListByDesignationResponse" />
+  </wsdl:message>
+  <wsdl:message name="BRACStaffsHttpGetIn" />
+  <wsdl:message name="BRACStaffsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="StaffInfoByPINHttpGetIn">
+    <wsdl:part name="strStaffPIN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="StaffInfoByPINHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getStaffInfoForMyBRACHttpGetIn">
+    <wsdl:part name="strStaffPIN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getStaffInfoForMyBRACHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStaffInfoByEmailHttpGetIn">
+    <wsdl:part name="EmailID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStaffInfoByEmailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStaffListByDesignationHttpGetIn">
+    <wsdl:part name="DesGrpID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStaffListByDesignationHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="BRACStaffsHttpPostIn" />
+  <wsdl:message name="BRACStaffsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="StaffInfoByPINHttpPostIn">
+    <wsdl:part name="strStaffPIN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="StaffInfoByPINHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getStaffInfoForMyBRACHttpPostIn">
+    <wsdl:part name="strStaffPIN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getStaffInfoForMyBRACHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStaffInfoByEmailHttpPostIn">
+    <wsdl:part name="EmailID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStaffInfoByEmailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStaffListByDesignationHttpPostIn">
+    <wsdl:part name="DesGrpID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStaffListByDesignationHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="StaffInfoSoap">
+    <wsdl:operation name="BRACStaffs">
+      <wsdl:input message="tns:BRACStaffsSoapIn" />
+      <wsdl:output message="tns:BRACStaffsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StaffInfoByPIN">
+      <wsdl:input message="tns:StaffInfoByPINSoapIn" />
+      <wsdl:output message="tns:StaffInfoByPINSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StaffInfoByDepartment">
+      <wsdl:input message="tns:StaffInfoByDepartmentSoapIn" />
+      <wsdl:output message="tns:StaffInfoByDepartmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StaffInfoByDepartmentAndStatus">
+      <wsdl:input message="tns:StaffInfoByDepartmentAndStatusSoapIn" />
+      <wsdl:output message="tns:StaffInfoByDepartmentAndStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStaffInfoForMyBRAC">
+      <wsdl:input message="tns:getStaffInfoForMyBRACSoapIn" />
+      <wsdl:output message="tns:getStaffInfoForMyBRACSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffInfoByEmail">
+      <wsdl:input message="tns:GetStaffInfoByEmailSoapIn" />
+      <wsdl:output message="tns:GetStaffInfoByEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffListByDesignation">
+      <wsdl:input message="tns:GetStaffListByDesignationSoapIn" />
+      <wsdl:output message="tns:GetStaffListByDesignationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="StaffInfoHttpGet">
+    <wsdl:operation name="BRACStaffs">
+      <wsdl:input message="tns:BRACStaffsHttpGetIn" />
+      <wsdl:output message="tns:BRACStaffsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StaffInfoByPIN">
+      <wsdl:input message="tns:StaffInfoByPINHttpGetIn" />
+      <wsdl:output message="tns:StaffInfoByPINHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStaffInfoForMyBRAC">
+      <wsdl:input message="tns:getStaffInfoForMyBRACHttpGetIn" />
+      <wsdl:output message="tns:getStaffInfoForMyBRACHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffInfoByEmail">
+      <wsdl:input message="tns:GetStaffInfoByEmailHttpGetIn" />
+      <wsdl:output message="tns:GetStaffInfoByEmailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffListByDesignation">
+      <wsdl:input message="tns:GetStaffListByDesignationHttpGetIn" />
+      <wsdl:output message="tns:GetStaffListByDesignationHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="StaffInfoHttpPost">
+    <wsdl:operation name="BRACStaffs">
+      <wsdl:input message="tns:BRACStaffsHttpPostIn" />
+      <wsdl:output message="tns:BRACStaffsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StaffInfoByPIN">
+      <wsdl:input message="tns:StaffInfoByPINHttpPostIn" />
+      <wsdl:output message="tns:StaffInfoByPINHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStaffInfoForMyBRAC">
+      <wsdl:input message="tns:getStaffInfoForMyBRACHttpPostIn" />
+      <wsdl:output message="tns:getStaffInfoForMyBRACHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffInfoByEmail">
+      <wsdl:input message="tns:GetStaffInfoByEmailHttpPostIn" />
+      <wsdl:output message="tns:GetStaffInfoByEmailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffListByDesignation">
+      <wsdl:input message="tns:GetStaffListByDesignationHttpPostIn" />
+      <wsdl:output message="tns:GetStaffListByDesignationHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="StaffInfoSoap" type="tns:StaffInfoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="BRACStaffs">
+      <soap:operation soapAction="http://tempuri.org/BRACStaffs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StaffInfoByPIN">
+      <soap:operation soapAction="http://tempuri.org/StaffInfoByPIN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StaffInfoByDepartment">
+      <soap:operation soapAction="http://tempuri.org/StaffInfoByDepartment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StaffInfoByDepartmentAndStatus">
+      <soap:operation soapAction="http://tempuri.org/StaffInfoByDepartmentAndStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStaffInfoForMyBRAC">
+      <soap:operation soapAction="http://tempuri.org/getStaffInfoForMyBRAC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffInfoByEmail">
+      <soap:operation soapAction="http://tempuri.org/GetStaffInfoByEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffListByDesignation">
+      <soap:operation soapAction="http://tempuri.org/GetStaffListByDesignation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="StaffInfoSoap12" type="tns:StaffInfoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="BRACStaffs">
+      <soap12:operation soapAction="http://tempuri.org/BRACStaffs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StaffInfoByPIN">
+      <soap12:operation soapAction="http://tempuri.org/StaffInfoByPIN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StaffInfoByDepartment">
+      <soap12:operation soapAction="http://tempuri.org/StaffInfoByDepartment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StaffInfoByDepartmentAndStatus">
+      <soap12:operation soapAction="http://tempuri.org/StaffInfoByDepartmentAndStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStaffInfoForMyBRAC">
+      <soap12:operation soapAction="http://tempuri.org/getStaffInfoForMyBRAC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffInfoByEmail">
+      <soap12:operation soapAction="http://tempuri.org/GetStaffInfoByEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffListByDesignation">
+      <soap12:operation soapAction="http://tempuri.org/GetStaffListByDesignation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="StaffInfoHttpGet" type="tns:StaffInfoHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="BRACStaffs">
+      <http:operation location="/BRACStaffs" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StaffInfoByPIN">
+      <http:operation location="/StaffInfoByPIN" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStaffInfoForMyBRAC">
+      <http:operation location="/getStaffInfoForMyBRAC" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffInfoByEmail">
+      <http:operation location="/GetStaffInfoByEmail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffListByDesignation">
+      <http:operation location="/GetStaffListByDesignation" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="StaffInfoHttpPost" type="tns:StaffInfoHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="BRACStaffs">
+      <http:operation location="/BRACStaffs" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StaffInfoByPIN">
+      <http:operation location="/StaffInfoByPIN" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStaffInfoForMyBRAC">
+      <http:operation location="/getStaffInfoForMyBRAC" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffInfoByEmail">
+      <http:operation location="/GetStaffInfoByEmail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffListByDesignation">
+      <http:operation location="/GetStaffListByDesignation" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="StaffInfo">
+    <wsdl:port name="StaffInfoSoap" binding="tns:StaffInfoSoap">
+      <soap:address location="http://dataservice.brac.net:800/StaffInfo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="StaffInfoSoap12" binding="tns:StaffInfoSoap12">
+      <soap12:address location="http://dataservice.brac.net:800/StaffInfo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="StaffInfoHttpGet" binding="tns:StaffInfoHttpGet">
+      <http:address location="http://dataservice.brac.net:800/StaffInfo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="StaffInfoHttpPost" binding="tns:StaffInfoHttpPost">
+      <http:address location="http://dataservice.brac.net:800/StaffInfo.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

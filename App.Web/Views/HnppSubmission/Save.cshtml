@@ -1,0 +1,19 @@
+﻿Saved Successfully
+
+@{
+    var ajaxOpt = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "dialog1Body",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "openDialog1('রোগীর তথ্য')",
+        LoadingElementId = "loading",
+        OnFailure = "failure"
+    };
+}
+@Ajax.ActionLink("নতুন তথ্য প্রদান", "Create", "HnppSubmission", new { isOpeningAsset = false }, ajaxOpt, new { @class = "btn btn-success" })
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#gridTable').dataTable().fnDraw();
+    });
+</script>

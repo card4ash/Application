@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FD9E21DB-82C4-43D2-9E40-83072E380F51}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppProj.Service</RootNamespace>
+    <AssemblyName>AppProj.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Email.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\EmailServiceReferance\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\StaffInfoServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ServicesImpl\DistrictByUserProfileService.cs" />
+    <Compile Include="ServicesImpl\DistrictDataService.cs" />
+    <Compile Include="ServicesImpl\HnppDataService.cs" />
+    <Compile Include="ServicesImpl\DetailDataService.cs" />
+    <Compile Include="ServicesImpl\RoleDefaultPageService.cs" />
+    <Compile Include="ServicesImpl\FeatureService.cs" />
+    <Compile Include="ServicesImpl\RoleFeatureService.cs" />
+    <Compile Include="ServicesImpl\RoleService.cs" />
+    <Compile Include="ServicesImpl\StandingDataService.cs" />
+    <Compile Include="ServicesImpl\SummerizedDataService.cs" />
+    <Compile Include="ServicesImpl\UserLoginLogService.cs" />
+    <Compile Include="ServicesImpl\UserProfileService.cs" />
+    <Compile Include="Services\IDistrictByUserProfileService.cs" />
+    <Compile Include="Services\IDistrictDataService.cs" />
+    <Compile Include="Services\IHnppDataService.cs" />
+    <Compile Include="Services\IDetailDataService.cs" />
+    <Compile Include="Services\IRoleDefaultPageService.cs" />
+    <Compile Include="Services\IFeatureService.cs" />
+    <Compile Include="Services\IRoleFeatureService.cs" />
+    <Compile Include="Services\IRoleService.cs" />
+    <Compile Include="Services\IStandingDataService.cs" />
+    <Compile Include="Services\ISummerizedDataService.cs" />
+    <Compile Include="Services\IUserLoginLogService.cs" />
+    <Compile Include="Services\IUserProfileService.cs" />
+    <Compile Include="SqlExecutor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\App.Data\AppProj.Data.csproj">
+      <Project>{095f327c-893c-46f3-a23c-6e46b8e16302}</Project>
+      <Name>AppProj.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.Domain\AppProj.Domain.csproj">
+      <Project>{633269f5-57af-4034-9283-a74d71b3108b}</Project>
+      <Name>AppProj.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EmailServiceReferance\AppProj.Service.EmailServiceReferance.responseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EmailServiceReferance\AppProj.Service.EmailServiceReferance.sendEmailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EmailServiceReferance\EmailWS.wsdl" />
+    <None Include="Service References\EmailServiceReferance\EmailWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StaffInfoServiceReference\StaffInfo.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\EmailServiceReferance\" />
+    <WCFMetadataStorage Include="Service References\StaffInfoServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EmailServiceReferance\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EmailServiceReferance\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EmailServiceReferance\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StaffInfoServiceReference\StaffInfo.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StaffInfoServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StaffInfoServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StaffInfoServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
