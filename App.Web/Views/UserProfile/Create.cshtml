@@ -32,8 +32,17 @@
                             @Html.LabelFor(model => model.Pin)
                         </td>
                         <td class="control">
-                            @Html.TextBoxFor(model => model.Pin)
-                            @Html.ValidationMessageFor(model => model.Pin)
+                            @if (Model.Id <= 0)
+                            {
+                                @Html.TextBoxFor(model => model.Pin)
+                                @Html.ValidationMessageFor(model => model.Pin)
+                            }
+                            else
+                            {
+                                @Html.HiddenFor(model => model.Pin)
+                                @Html.DisplayFor(model => model.Pin)
+                            }
+
                         </td>
                     </tr>
                     <tr>

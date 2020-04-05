@@ -25,7 +25,7 @@ using Newtonsoft.Json;
 namespace AppProj.Web.Controllers
 {
     [Authorize]
-    [CustomAuthorize(Roles:new string[] { "USER"})]
+    [CustomAuthorize(Roles: new string[] { "USER" })]
     public class UserProfileController : Controller
     {
         readonly IUserProfileService service;
@@ -34,7 +34,7 @@ namespace AppProj.Web.Controllers
         readonly IStandingDataService standingDataService;
         readonly IUnitOfWork unitOfWork;
         readonly IDistrictByUserProfileService districtByUserProfileService;
-        readonly int userId = SessionHelper.UserId; 
+        readonly int userId = SessionHelper.UserId;
 
         public UserProfileController(IUserProfileService service, IRoleService roleService, IDistrictByUserProfileService districtByUserProfileService
             , IStandingDataService standingDataService, IRoleFeatureService roleFeatureService, IUnitOfWork unitOfWork)
@@ -48,13 +48,13 @@ namespace AppProj.Web.Controllers
         }
 
         public ActionResult Index()
-        {   
+        {
             return View();
         }
 
         public ActionResult Create()
         {
-            UserProfileModel up = new UserProfileModel();            
+            UserProfileModel up = new UserProfileModel();
             up.Roles = roleService.GetAll().ToSelectList(null, "Id", "RoleName");
             up.IsActive = true;
 
@@ -69,7 +69,7 @@ namespace AppProj.Web.Controllers
 
             UserProfileModel model = new UserProfileModel();
             ModelCopier.CopyModel(entity, model);
-            
+
             return PartialView("Create", model);
         }
 
@@ -77,32 +77,44 @@ namespace AppProj.Web.Controllers
         {
             var login = service.GetByPin(model.Pin);
 
-            if (login != null)
+            if (login != null && model.Id <= 0)
             {
                 model.Roles = roleService.GetAll().ToSelectList(null, "Id", "RoleName");
-                
+
                 ModelState.AddModelError("", "This user has already added");
                 return PartialView("Create", model);
             }
 
-            if ("" + model.Password != "")
+
+            if (model.Id <= 0 && "" + model.Password != "")
             {
                 model.Password = "" + model.Password.ToMD5();
             }
-
-            UserProfile entity = new UserProfile();
             
-            ModelCopier.CopyModel(model, entity);
-
-            service.Add(entity);
             
+
+            if (model.Id > 0)
+            {
+                login.UserName = model.UserName;
+                login.EmailAddress = model.EmailAddress;
+                login.RoleId = model.RoleId;
+                login.IsActive = model.IsActive;
+                service.Update(login);
+            }
+            else
+            {
+                UserProfile entity = new UserProfile();
+                ModelCopier.CopyModel(model, entity);
+                service.Add(entity);
+            }
+
             unitOfWork.Commit();
             SessionHelper.Temp = null;
 
             return PartialView();
 
         }
-        
+
         public ActionResult Details(int id)
         {
             UserProfile entity = service.GetDataById(id);
@@ -303,17 +315,17 @@ namespace AppProj.Web.Controllers
                 var dataString = response.Content.ReadAsAsync<string>().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll
 
                 IEnumerable<StaffProfile> dataObjects = String.IsNullOrEmpty(dataString) ? null : JsonConvert.DeserializeObject<IEnumerable<StaffProfile>>(dataString);
-                
+
                 if (dataObjects != null)
                 {
                     client.Dispose();
                     return Json(dataObjects.FirstOrDefault(), JsonRequestBehavior.AllowGet);
                 }
             }
-            
-        client.Dispose();
-        return Json(null, JsonRequestBehavior.AllowGet);
-            
+
+            client.Dispose();
+            return Json(null, JsonRequestBehavior.AllowGet);
+
 
         }
 
@@ -334,7 +346,7 @@ namespace AppProj.Web.Controllers
                         ,new GridButtonModel{U=Url.Action("Details",new {id=c.Id}), T="Details", D = GridButtonDialog.dialig1.ToString(),H="User Profile"}
                         ,new GridButtonModel{U=Url.Action("ResetPass",new {id=c.Id}), T="Password Reset", D = GridButtonDialog.dialig1.ToString(), H="Reset Password", V=(""+c.Password!="")}
                         ,new GridButtonModel{U=Url.Action("Districts",new {id=c.Id}), T="Districts", D = GridButtonDialog.dialig1.ToString(),H="Assigned Districts"}
-                        
+
                     }
             }).Skip(tke).Take(skp).ToArray();
 
@@ -348,5 +360,5 @@ namespace AppProj.Web.Controllers
         }
     }
 }
-    
+
 

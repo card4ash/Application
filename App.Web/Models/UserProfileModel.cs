@@ -15,7 +15,7 @@ namespace AppProj.Web.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please Insert BRAC PIN / Login User Name.")]
-        [Display(Name = "Pin")]
+        [Display(Name = "PIN / User Id")]
         public string Pin { get; set; }
         
         [Required(ErrorMessage = "Please Insert Full Name.")]
