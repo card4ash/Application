@@ -118,8 +118,15 @@
 
     $(document).ready(function () {
         $("#Pin").focusout(function () {
+
             var rows = $('table.tbluser tr');
+            var trpas = rows.filter('.trpass');
+
             var pinId = this.value;
+
+            $("#ConfirmNewPassword").val('');
+            $("#Password").val('');
+
             $.ajax({
                 cache: false,
                 url: '@Url.Content("~/UserProfile/GetProfileByPin")?pinId=' + pinId,
@@ -129,10 +136,17 @@
                 complete: function () {
                 },
                 success: function (data) {
-                    rows.filter('.trpass').hide();
-                    $("#UserName").val(data.StaffName);
-                    $("#EmailAddress").val(data.EmailID);
-                   
+
+                    if (data == null) {
+                        trpas.show();
+                        alert('no staff found at BRAC HR');
+                    }
+                    else {
+                        trpas.hide();
+                        $("#UserName").val(data.StaffName);
+                        $("#EmailAddress").val(data.EmailID);
+                    }
+
                     //var d = new Date(parseInt(data.DOB.substr(6)));
                     //$("#dob").val(d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear());
 
@@ -149,37 +163,11 @@
                 },
                 error: function (x, e) {
                     alert('no staff found at BRAC HR');                    
-                    rows.filter('.trpass').show();
+                    trpas.show();
                 }
                }); //end ajax call
         });
     });
 
-    function getProfileByPin(obj) {
-       // alert("hello");
-            var id = obj.id;
-            var pinId = parseInt($("#" + id).val());
-
-            $.ajax({
-                cache: false,
-                url: '@Url.Content("~/UserProfile/GetProfileByPin")?pinId=' + pinId,
-                type: "GET",
-                beforeSend: function () {
-                },
-                complete: function () {
-                },
-                success: function (data) {
-                    $("#UserName").val(data.Fname + ' ' + data.Mname + ' ' + data.Lname);
-                    $("#EmailAddress").val(data.Email);
-                    
-                    var d = new Date(parseInt(data.DOB.substr(6)));
-                    $("#dob").val(d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear());
-
-                },
-                error: function (x, e) {
-                    alert('error');
-                }
-              }); //end ajax call
-
-        }
+    
 </script>

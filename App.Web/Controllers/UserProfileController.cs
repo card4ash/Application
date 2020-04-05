@@ -81,11 +81,14 @@ namespace AppProj.Web.Controllers
             {
                 model.Roles = roleService.GetAll().ToSelectList(null, "Id", "RoleName");
                 
-                ModelState.AddModelError("", "User has exists");
+                ModelState.AddModelError("", "This user has already added");
                 return PartialView("Create", model);
             }
 
-            model.Password = ""+model.Password.ToMD5();
+            if ("" + model.Password != "")
+            {
+                model.Password = "" + model.Password.ToMD5();
+            }
 
             UserProfile entity = new UserProfile();
             
@@ -298,10 +301,10 @@ namespace AppProj.Web.Controllers
                 // Parse the response body.
 
                 var dataString = response.Content.ReadAsAsync<string>().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll
-                var dataObjects = JsonConvert.DeserializeObject<IEnumerable<StaffProfile>>(dataString);
 
-
-                if (dataObjects.Count() > 0)
+                IEnumerable<StaffProfile> dataObjects = String.IsNullOrEmpty(dataString) ? null : JsonConvert.DeserializeObject<IEnumerable<StaffProfile>>(dataString);
+                
+                if (dataObjects != null)
                 {
                     client.Dispose();
                     return Json(dataObjects.FirstOrDefault(), JsonRequestBehavior.AllowGet);
