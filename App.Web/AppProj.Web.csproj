@@ -3302,8 +3302,6 @@
     <Content Include="aspnet_client\system_web\4_6_79\crystalreportviewers13\preview.jsp" />
     <Content Include="aspnet_client\system_web\4_5_27\crystalreportviewers13\crsmarttag.jsp" />
     <Content Include="aspnet_client\system_web\4_5_27\crystalreportviewers13\preview.jsp" />
-    <Content Include="brac-project-bucket.json" />
-    <Content Include="myCalendarConfig.json" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\exportExcell.js" />
